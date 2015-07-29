@@ -81,12 +81,10 @@
         <section class="threecol">
             <h3>Software Libero</h3>
             <ul>
-                <li><a href="http://trac.openpolis.it/openpolis/browser/trunk">Codice Sorgente</a></li>
+                <li><a href="http://github.com/openpolis">Codice Sorgente</a></li>
                 <li><a href="http://www.gnu.org/copyleft/gpl.html">Licenza GNU/GPL</a></li>
                 <li><a href="http://politici.openpolis.it/software">I Software utilizzati</a></li>
             </ul>
-            <a href="https://github.com/openpolis"><span class="icon trac">Git</span></a>
-            <a href="http://trac.openpolis.it/openpolis/wiki"><span class="icon google">Trac</span></a>
             <div class="clearfix"></div>
         </section>
         <section class="threecol last">

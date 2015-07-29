@@ -50,8 +50,7 @@ Nasce sulle spalle di altri software liberi che ci teniamo a elencare, perch&egr
 <li><a href="http://lucene.apache.org/solr/">Solr</a>, enterprise search server basato su <a href="http://lucene.apache.org/">Lucene</a>, utilizzato per la ricerca nel sito</li>
 <li><a href="http://wiki.apache.org/solr/SolPHP">SolPHP</a></li>
 <li><a href="http://tomcat.apache.org/">Tomcat</a>, il web container necessario per l'implementazione di Solr</li>
-<li><a href="http://trac.edgewall.org/">Trac</a>, il sistema di tracking utilizzato per lo sviluppo del progetto</li>
-<li><a href="http://subversion.tigris.org/">Subversion</a>, il version control system scelto</li>
+<li><a href="https://git-scm.com/">Git</a>, il software per il Source Code Management</li>
 </ul>
 
 </div>
