@@ -1,0 +1,131 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+methods: [post]
+
+fields:
+  nickname:
+    nicknameValidator:
+    newNicknameValidator:
+    noSpaceValidator:
+
+  firstname:
+    required:
+      msg: "obbligatorio"
+
+  lastname:
+    required:
+      msg: "obbligatorio"
+
+  location:
+    required:
+      msg: "obbligatorio"
+    locationValidator:
+
+  email:
+    required:
+      msg: "obbligatorio"
+    emailValidator: 
+    newEmailValidator: 
+    emailBisValidator:
+
+  email_bis:
+    required:
+      msg: "obbligatoria"
+
+  password:
+    required:
+      msg: "obbligatoria"
+    passwordValidator: 
+    passwordBisValidator:
+
+  password_bis:
+    required:
+      msg: "obbligatoria"
+
+  accetto:
+    required:
+      msg: "accettazione necessaria"
+
+
+validators:
+  noSpaceValidator:
+    class: sfRegexValidator
+    param:
+      match:        No
+      match_error:  "Il nickname non pu&ograve; contenere spazi" 
+      pattern:      /\s/ 
+    
+  locationValidator:
+    class: myLocationValidator
+    param:
+      check_id:        location_id
+      no_location_error:  "comune inesistente"
+      too_many_location_error: "pi&ugrave; di un comune"
+  
+  newNicknameValidator:
+    class: myNewNicknameValidator
+    param:
+      newnickname_error:  "gi&agrave; utilizzato"
+    
+  nicknameValidator:
+      class: sfStringValidator
+      param:
+        min:        6
+        min_error:  "almeno 6 caratteri"
+        max:        12
+        max_error:  "al massimo 12 caratteri"
+      
+  passwordValidator:
+      class: sfStringValidator
+      param:
+        min:        6
+        min_error:  "almeno 6 caratteri"
+        max:        12
+        max_error:  "al massimo 12 caratteri"
+
+  passwordBisValidator:
+      class: sfCompareValidator
+      param:
+        check:          password_bis
+        compare_error:  "non corrisponde"
+
+
+  emailValidator:
+      class: sfEmailValidator
+      param:
+        email_error:  "non valida (esempio: gianni@mail.com)"
+
+  emailBisValidator:
+      class: sfCompareValidator
+      param:
+        check:          email_bis
+        compare_error:  "non corrisponde"
+      
+  newEmailValidator:
+      class: myNewEmailValidator
+      param:
+        newemail_error:  "gi&agrave; utilizzato"
+

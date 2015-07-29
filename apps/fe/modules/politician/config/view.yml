@@ -1,0 +1,83 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+default:
+  metas:
+    title:        openpolis - politici
+    description:  openpolis, la sezione dei politici
+
+pictureSuccess:
+  http_metas:
+    content-type: image/jpeg
+
+  has_layout: false
+
+organization:
+  has_layout: false
+
+forinstitutionSuccess:
+  components:
+     cloud:       [sidebar, institutionClouds]
+     feed:        [sidebar, institutionFeed]
+     wiki:        [sidebar, institutionWiki]
+     statistics:  [statistics, institutionStatistics]
+
+pageSuccess:
+  components:
+     wiki:        [sidebar, politicianWiki]
+     users:       [user, politicianUsers]
+     adoptions:   [user, adoptionUsers]
+
+regPoliticiansSuccess:
+   components:
+     cloud:       [sidebar, locationClouds]
+     feed:        [sidebar, locationFeed]
+     wiki:        [sidebar, regionalWiki]
+     statistics:  [statistics, regionalStatistics]
+     users:       [user, locationUsers]
+     adoptions:   [user, locAdoptionUsers]
+
+provPoliticiansSuccess:
+   components:
+     cloud:       [sidebar, locationClouds]
+     feed:        [sidebar, locationFeed]
+     wiki:        [sidebar, provincialWiki]
+     statistics:  [statistics, provincialStatistics]
+     users:       [user, locationUsers]
+     adoptions:   [user, locAdoptionUsers]
+
+munPoliticiansSuccess:
+   components:
+     bilancio:    [sidebar, linkBilancio]
+     cloud:       [sidebar, locationClouds]
+     feed:        [sidebar, locationFeed]
+     wiki:        [sidebar, municipalWiki]
+     statistics:  [statistics, municipalStatistics]
+     users:       [user, locationUsers]
+     adoptions:   [user, locAdoptionUsers]
+
+listTaxDeclarationSuccess:
+    components:
+      cloud:      [sidebar, taxDeclaration]   

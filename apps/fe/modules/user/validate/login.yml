@@ -1,0 +1,49 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+methods:
+  post: [email, password]
+  
+names:
+  email:
+    required:      true
+    required_msg:  "la mail &egrave; richiesta"
+    validators:    [emailValidator, userValidator]
+
+  password:
+    required:      true
+    required_msg:  "la password &egrave; richiesta"
+
+emailValidator:
+    class: sfEmailValidator
+    param:
+      email_error:  "l'indirizzo email inserito non &egrave; valido"
+
+userValidator:
+    class:         sfRemoteGuardLoginValidator
+    param:
+      password_field:    password
+      remember_field:    remember_me
+      login_error: "questo account non esiste o la password &egrave; errata"

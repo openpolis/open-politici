@@ -1,0 +1,1 @@
+count: <?php echo count($recs) ?>

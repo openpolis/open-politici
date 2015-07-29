@@ -1,0 +1,63 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+politiciansLayout:
+  components:
+    main_menu:    [menu, mainMenu]
+
+default:
+  http_metas:
+    content-type: text/html; charset=utf-8
+
+  metas:
+    title:        openpolis
+    robots:       "<?php echo sfConfig::get('sf_robots'); ?>"
+    googlebot:    "<?php echo sfConfig::get('sf_googlebot'); ?>"
+    description:  "monitora chi sono, cosa fanno e dicono tutti 150mila politici eletti in Italia"
+    keywords:     "openpolis, social software, politica, amministratori locali, comuni, regioni, province, partecipazione"
+    language:     it
+    google-site-verification: "pUD79-TXeNtrU29AiD3HTRt4bntUyBBrGtA5prUo2oM"
+
+  stylesheets:    [screen]
+
+  javascripts:    ["/js/jquery-1.4.4.min.js", prototype, effects, toggle_function]
+
+  has_layout:     on
+  layout:         layout
+
+  slots:          {}
+
+  use_default_slots: on
+  
+  components:
+    sidebar:      [sidebar, default]
+    bilancio:     []
+    cloud:        []
+    feed:         []
+    main_menu:    [menu, mainMenu]
+    wiki:         []
+    statistics:   []
+    users:        []
+    adoptions:    []

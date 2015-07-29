@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.5.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfPropelSqlDiffPlugin</name>
+ <channel>plugins.symfony-project.org</channel>
+ <summary>generate diff.sql file, which contains difference beetween schema.yml and current database structure</summary>
+ <description>sfPropelSqlDiff plugin generate diff.sql file, which contains difference beetween schema.yml and current database structure.</description>
+ <lead>
+  <name>Sergey Smirnov</name>
+  <user>gray</user>
+  <email>smserg@bk.ru</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-04-22</date>
+ <time>18:43:21</time>
+ <version>
+  <release>0.1.4</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>-</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="4b803ae3f1fb67c38ea00a477f94d408" name="data/tasks/sfPropelSqlDiffTask.php" role="data" />
+   <file md5sum="c661b1f18f1c22254d3af8fb6d0d9ba0" name="lib/task/sfPropelBuidSqlDiffTask.class.php" role="data" />
+   <file md5sum="2e3e6c614ce5bf901f24561b5847dcc7" name="lib/task/sfPropelBuildAllDiffTask.class.php" role="data" />
+   <file md5sum="b40a88e183f2ef226035d3d61d58daef" name="lib/task/sfPropelInsertSqlDiffTask.class.php" role="data" />
+   <file md5sum="af26f58b2ec860be076d1ee3f1fcd6f2" name="lib/dbInfo.php" role="data" />
+   <file md5sum="80c1d3c6759e08ee82de221af98d0f60" name="README" role="data" />
+   <file md5sum="57518521d048d2b3ced280fa08229466" name="LICENSE" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>0.8.1</min>
+    <max>1.2.0</max>
+    <exclude>1.2.0</exclude>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog />
+</package>

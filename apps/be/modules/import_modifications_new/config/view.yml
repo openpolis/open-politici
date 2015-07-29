@@ -1,0 +1,4 @@
+listSuccess:
+  stylesheets:    ["ui-lightness/jquery-ui-1.8.11.custom.dialog.css", "import_generator-addon.css"]
+  javascripts:    [ "jquery-1.5.1.min.js", "jquery-ui-1.8.11.custom.dialog.min.js" ]
+  

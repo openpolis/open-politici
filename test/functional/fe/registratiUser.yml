@@ -1,0 +1,10 @@
+# valori utente di test per lo scenario registrati
+firstname:   "Caio Duilio"
+lastname:    "Motrone"
+pubblico:    1
+nickname:    "er_ventresca"
+location:    "Roma"
+location_id: 5132
+email:       "c.duilio@depp.it"
+password:    "Vakka94"
+accetto:     1

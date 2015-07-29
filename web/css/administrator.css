@@ -1,0 +1,93 @@
+table#adoptionsList{
+  margin-top: 15px;
+}
+
+table#adoptionsList td{
+  text-align: center;
+}
+
+table#adoptionsList tr.light{
+  background-color: #eeeeee;
+}
+
+table#adoptionsList tr.dark{
+  color: #eeeeee;
+  background-color: #999999;
+}
+
+
+
+.admin_table {
+	border:1px solid #333333
+}
+
+.admin_table tr th span {
+	text-transform:uppercase
+}
+
+.admin_table tr td, .admin_institution_table tr td {
+	background-color:#E9E9E9
+}
+
+.admin_table tr td select {
+	width:140px
+}
+
+.admin_table tr td input.calendar, .admin_institution_table tr td input.calendar {
+	width:80px;
+	background:none;
+	background-color:#FFFFFF
+}
+
+.admin_table tr td input#location {
+	width:200px
+}
+
+table.politician_data {
+	margin-left:10px
+}
+
+
+table.politician_data tr td select#sex {
+	width:100px;
+}
+
+table.politician_data tr td select#birth_date_year, table.politician_data tr td select#death_date_year,
+select#date_start_year, select#date_end_year {
+	width:60px;
+	margin-left:5px
+}
+
+table.politician_data tr td select#birth_date_month, table.politician_data tr td select#death_date_month,
+select#date_start_month, select#date_end_month {
+	width:90px;
+	margin-left:5px
+}
+
+table.politician_data tr td select#birth_date_day, table.politician_data tr td select#death_date_day,
+select#date_start_day, select#date_end_day {
+	width:50px
+}
+
+.admin_institution_table {
+	border:1px solid #333333;
+	margin-top:20px
+}
+
+.admin_institution_table tr td select {
+	width:170px
+}
+
+#search{
+	margin-top:5px;
+	margin-bottom:15px; 
+	float:left;
+}
+
+#search input{
+	width:250px
+}
+
+#search ul, #search li{
+	z-index:10000
+}

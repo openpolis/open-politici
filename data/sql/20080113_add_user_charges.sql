@@ -1,0 +1,1 @@
+alter table op_user add column charges int(10) default 0 after public_name;

@@ -1,0 +1,750 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+
+# google sitemap
+gsitemap:
+  url: /sitemap.xml
+  param: { module: sfSimpleGoogleSitemap, action: index }
+
+#json_api
+json_get_locations_for_accesso_autocompleter:
+  url: /json_getLocationsForAccessoAutocompleter/*
+  param: { module: api, action: getLocationsForAccessoAutocompleter }
+json_get_locations_for_indice_autocompleter:
+  url: /json_getLocationsForIndiceAutocompleter/*
+  param: { module: api, action: getLocationsForIndiceAutocompleter }
+  
+# api
+api_minint_context_csv:
+  url: /api/minint_context/:key/:location_type/*.csv
+  param: { module: api, action: minintContextCSV }
+
+api_get_cities_istat_ids:
+  url: /api/getCitiesIstatIds/:key/:limit/:offset
+  param: { module: api, action: getCitiesIstatIds, limit: 0, offset: 0 }
+  
+api_fetch_touched_politicians:
+  url: /api/fetchTouchedPoliticians/:key/:last_updated_at
+  param: { module: api, action: fetchTouchedPoliticians }
+
+api_fetch_touched_cities:
+  url: /api/fetchTouchedCities/:key/:last_updated_at
+  param: { module: api, action: fetchTouchedCities }
+
+api_representatives_find_by_city:
+  url: /api/representativesFindByCity/:key/:istat_code
+  param: { module: api, action: representativesFindByCity }
+
+api_politicians_find_by_location:
+  url: /api/politiciansFindByLocation/:key/:location_type/:istat_code
+  param: { module: api, action: politiciansFindByLocation }
+
+api_politician_career:
+  url: /api/politicianCareer/:key/:politician_id
+  param: { module: api, action: politicianCareer }
+  
+api_politician_has_image:
+  url:/api/hasPolImage/:key/:politician_id
+  param: { module: api, action: hasPolImage }
+      
+api_politician_find_by_name:
+  url: /api/peopleFindByName/:key/:nome/:cognome
+  param: { module: api, action: politicianFindByName }
+
+api_location_find_by_name:
+  url: /api/locationFindByName/:key/:loc_query/:loc_type
+  param: { module: api, action: locationFindByName, loc_type: ' ' }
+  
+api_charge_find_by_politician:
+  url: /api/chargeFindByPolitician/:key/:id
+  param: { module: api, action: chargeFindByPolitician }  
+  
+api_politician_image:
+  url: /api/getPolImage/:key/:id
+  param: { module: api, action: getPolImage }
+
+api_question:
+  url:   /api/question/:stripped_title
+  param: { module: api, action: question }
+
+# contenuti statici
+chi_siamo:
+  url: /chisiamo
+  param: { module: static, action: chiSiamo }
+
+prossimi_passi:
+  url: /prossimipassi
+  param: { module: static, action: prossimi }
+
+contatti:
+  url: /contatti
+  param: { module: static, action: contatti }
+    
+regolamento:
+  url: /regolamento
+  param: { module: static, action: regolamento }
+
+condizioni:
+  url: /condizioni
+  param: { module: static, action: condizioni }
+
+informativa:
+  url: /informativa
+  param: { module: static, action: informativa }
+
+contribuisci:
+  url: /contribuisci
+  param: { module: static, action: contribuisci }
+
+budget:
+  url: /budget
+  param: { module: static, action: budget }
+
+software:
+  url: /software
+  param: { module: static, action: software }
+
+
+# energy report
+energy_report:
+  url: /energyReport
+  param: { module: declarationReports, action: energy }
+
+energy_report_tag:
+  url: /energyReport/:tag_ids
+  param: { module: declarationReports, action: energy }
+
+energy_report_trend:
+  url: /energyReportTrend
+  param: { module: declarationReports, action: energyTrend }
+
+energy_report_trend_tag:
+  url: /energyReportTrend/:tag_ids
+  param: { module: declarationReports, action: energyTrend }
+  
+  
+  
+# statistiche
+donazioni:
+  url: /donazioni
+  param: { module: statistics, action: donazioni }
+
+# declaration
+
+addFromBookmarklet:
+  url:  /polDeclarations/addFromBookmarklet/:mode/:has_layout
+  param: { module: polDeclarations, action: addFromBookmarklet }
+
+selectable_list:
+  url:  /selectable_list/:page/:sort/:selectable_query
+  param: { module: polDeclarations, action: selectableList, page: 1, sort: 'last', selectable_query: 'x' }
+
+declarations_list:
+  url:  /declarations_list/:page
+  param: { module: polDeclarations, action: declarationsList, page: 1}
+
+last_declarations:
+    url: /last_declarations/:amount
+    param: { module: polDeclarations, action: lastDeclarations, amount: 10 }
+    
+last_declarations_new:
+      url: /ultime-dichiarazioni-dei-politici/:amount
+      param: { module: polDeclarations, action: lastDeclarations, amount: 10 }
+  
+dichiarazione_new:
+    url: /dichiarazione/:year/:month/:day/:politician/:slug/:declaration_id
+    param: { module: polDeclarations, action: index }
+    
+dichiarazione:
+  url:   /dichiarazione/:declaration_id
+  param: { module: polDeclarations, action: index }
+
+frontpage_questions:
+  url:   /front/:page
+  param: { module: question, action: frontpage, page: 1 }
+
+popular_questions:
+  url:   /index/:page
+  param: { module: question, action: list, page: 1 }
+
+recent_questions:
+  url:   /recent/:page
+  param: { module: question, action: recent, page: 1 }
+
+add_question:
+  url:   /add_question
+  param: { module: question, action: add }
+
+search_question:
+  url:   /search/*
+  param: { module: question, action: search }
+
+# answers
+recent_answers:
+  url:   /recent/answers/:page
+  param: { module: answer, action: recent, page: 1 }
+
+add_answer:
+  url:   /add_anwser
+  param: { module: answer, action: add }
+
+answers:
+  url:   /question/:stripped_title/page/:page
+  param: { module: question, action: show, page: 1 }
+
+# user
+user_interests:
+  url:   /question/:stripped_title/interests/:page
+  param: { module: user, action: listInterestedBy }
+
+user_profile:
+  url:   /user/:hash
+  param: { module: user, action: show }
+
+user_update:
+  url:   /update_user
+  param: { module: user, action: update }
+
+current_user_profile:
+  url:   /user
+  param: { module: user, action: show }
+
+add_user:
+  url:   /add_user
+  param: { module: user, action: add }
+
+added_user:
+  url: /added_user
+  param: { module: user, action: added }
+
+activate_user:
+  url: /activate_user/:hash
+  param: { module: user, action: attivation}
+
+add_requiring_user:
+  url:  /add_requiring_user
+  param: { module: user, action: addRequiring }
+
+added_requiring_user:
+  url: /added_requiring_user
+  param: { module: user, action: addedRequiring }
+
+user_require_password:
+  url:   /password_request
+  param: { module: user, action: passwordRequest }
+
+user_report_content:
+  url:   /report_content/:id
+  param: { module: user, action: reportContent }
+
+user_picture:
+  url: /user_picture/:hash/*
+  param: {module: user, action: picture}
+
+user_edit_picture:
+  url:  /user_edit_picture/:hash
+  param: {module: user, action: editPicture}
+
+user_delete_picture:
+  url: /user_delete_picture/:hash
+  param: {module: user, action: deletePicture}
+
+user_edit_notes:
+  url:  /user_edit_notes/:hash
+  param: {module: user, action: editNotes}
+
+user_edit_password:
+  url:  /user_edit_password
+  param: {module: user, action: editPassword}
+
+user_edit_location:
+  url:  /user_edit_location
+  param: {module: user, action: editLocation}
+
+user_edit_url:
+  url:  /user_edit_url
+  param: {module: user, action: editUrl}
+
+user_switch_wtbm:
+  url:  /user_switch_want_to_be_moderator
+  param: {module: user, action: switch_wtbm}
+
+# administrators
+obscured_contents:
+  url: /obscured_contents
+  param: {module: administrator, action: obscuredContents}
+
+moderators:
+  url: /moderators/:page
+  param: {module: administrator, action: moderators}
+
+administrators:
+  url: /administrators/:page
+  param: {module: administrator, action: administrators}
+  
+moderator_candidates:
+  url: /moderator_candidates/:page
+  param: {module: administrator, action: moderator_candidates}
+  
+problematic_users:
+  url: /problematic_users/:page
+  param: {module: administrator, action: problematic_users}
+  
+
+# login
+login_social:
+  url:  /login_sociale
+  param: { module: user, action: loginSocial }
+
+# politici
+politici:
+  url:   /politici
+  param: { module: default, action: politiciansHome }
+  
+politici_new:  
+  url:   /politici-italiani-eletti-in-tutti-i-livelli-istituzionali
+  param: { module: default, action: politiciansHome }
+
+segnalazione:
+  url:   /segnalazione/politico/:politician_id
+  param: { module: politician, action: reportForm }
+
+# argomenti
+argomenti:
+  url:   /argomenti
+  param: { module: argument, action: index }
+  
+argomenti_new:
+  url: /dichiarazioni-dei-politici-per-argomento
+  param: { module: argument, action: index }
+  
+# temi
+spread_new_theme:
+  url:  /diffondi_nuovo_tema/:theme_id
+  param: { module: themes, action: spreadNewTheme }
+
+send_new_theme:
+  url:  /invia_nuovo_tema
+  param: { module: themes, action: sendNewTheme }
+  
+sent_new_theme:
+  url:  /inviato_nuovo_tema
+  param: { module: themes, action: sentNewTheme }
+  
+posizioni:
+  url: /posizioni
+  param: { module: themes, action: index }
+
+themes_list:
+  url:  /lista_temi/:sort
+  param: { module: themes, action: list, sort: random }
+  
+themes:
+  url:  /temi/:area/:sort/:page
+  param: { module: themes, action: themesList, area: '', sort: random, page: 1 }
+
+tema:
+  url:  /tema/:theme_id
+  param: { module: themes, action: show }
+  
+obscure_theme:
+  url:  /oscura_tema/:theme_id
+  param: { module: themes, action: obscure}  
+
+delete_theme:
+  url:  /rimuovi_tema
+  param: { module: themes, action: delete}  
+
+associa_dichiarazione:
+  url:  /associa_dichiarazione/:theme_id
+  param: { module: themes, action: createDeclarationForTheme }
+
+aggiungi_dichiarazione_associata:
+  url: /aggiungi_dichiarazione_associata/:theme_id
+  param: { module: themes, action: addDeclarationForTheme }
+
+aggiunta_dichiarazione_associata:
+  url: /aggiunta_dichiarazione_associata/:theme_id/:declaration_id/:position
+  param: { module: themes, action: addedDeclarationForTheme }
+
+rimuovi_dichiarazione_associata:
+  url:  /rimuovi_dichiarazione_associata/:theme_id/:declaration_id
+  param: { module: themes, action: removeDeclarationForTheme }
+
+    
+edit_dichiarazione_associata:
+  url:  /edit_dichiarazione_associata/:theme_id/:declaration_id
+  param: { module: themes, action: editDeclarationForTheme }
+
+  
+select_declaration:
+  url:  /select_declaration
+  param: { module: themes, action: selectDeclaration }
+  
+# comunita
+comunita_new:
+  url:  /la-comunita-di-utenti-di-openpolis 
+  param: { module: community, action: index }
+  
+comunita:
+  url:   /comunita
+  param: { module: community, action: index }
+
+# lista utenti
+utenti:
+  url:   /utenti/:location_id/:region_id/:sort_field/:sort_order/:page
+  param: { module: user, action: usersList }
+
+# localita
+localita:
+  url:   /localita/:location_id
+  param: { module: politician, action: forlocation }
+
+localita_new:
+    url:   /localita/:slug/:location_id
+    param: { module: politician, action: forlocation }
+
+# istituzione
+istituzione_new:
+    url:   /istituzione/:slug/:id
+    param: { module: politician, action: forinstitution }
+
+istituzione:
+  url:   /istituzione/:id
+  param: { module: politician, action: forinstitution }
+
+# regione
+regione_new:
+  url:  /regione/:slug/:location_id
+  param: { module: politician, action: regPoliticians }
+  
+regione:
+  url:  /regione/:location_id
+  param: { module: politician, action: regPoliticians }
+
+# provincia
+provincia_new:
+  url:  /provincia/:slug/:location_id
+  param: { module: politician, action: provPoliticians }
+  
+provincia:
+  url:  /provincia/:location_id
+  param: { module: politician, action: provPoliticians }
+
+# comune
+comune_new:
+  url:  /comune/:slug/:location_id
+  param: { module: politician, action: munPoliticians }
+  
+comune:
+  url:  /comune/:location_id
+  param: { module: politician, action: munPoliticians }
+
+# politico
+
+politico_new:
+  url: /politico/:slug/:content_id
+  param: { module: politician, action: page } 
+politico:
+  url: /politico/:content_id
+  param: { module: politician, action: page }
+
+
+# adozioni
+adozione:
+  url: /adozione/:type/:adoptee_id
+  param: {module: user, action: adoption}
+  
+adotta_politico:
+  url: /adotta_politico
+  param: {module: user, action: pol_adopt}
+
+adotta_localita:
+  url: /adotta_localita
+  param: {module: user, action: loc_adopt}
+
+adozioni:
+  url: /adozioni
+  param: {module: administrator, action: adoptions}
+
+lista_adozioni:
+  url: /lista_adozioni
+  param: {module: administrator, action: adoptions}
+
+elenco_adozioni:
+  url: /elenco_adozioni/:type/:page/
+  param: {module: administrator, action: adoptionsList}
+  
+accetta_adozione:
+  url: /accetta_adozione/:type/:adopter_id/:adoptee_id  
+  param: {module: administrator, action: adoptionAccept}
+
+ragione_rifiuto_adozione:
+  url: /ragione_rifiuto_adozione/:type/:adopter_id/:adoptee_id   
+  param: {module: administrator, action: adoptionRefuseReason}
+
+rifiuta_adozione:
+  url: /rifiuta_adozione/
+  param: {module: administrator, action: adoptionRefuse}
+
+blocca_adozione:
+  url: /blocca_adozione/:type/:adopter_id/:adoptee_id   
+  param: {module: administrator, action: adoptionBlock}
+
+sblocca_adozione:
+  url: /sblocca_adozione/:type/:adopter_id/:adoptee_id 
+  param: {module: administrator, action: adoptionUnblock}
+
+# integrazione camera-senato
+presenze_camera:
+  url: /presenzeCamera
+  param: {module: integrazione_cam_sen, action: ListaTotalePresenzeCamera}
+
+presenze_senato:
+  url: /presenzeSenato
+  param: {module: integrazione_cam_sen, action: ListaTotalePresenzeSenato}
+
+indice_camera:
+  url: /indiceCamera
+  param: {module: integrazione_cam_sen, action: ListaTotaleIndiceCamera}
+
+indice_senato:
+  url: /indiceSenato
+  param: {module: integrazione_cam_sen, action: ListaTotaleIndiceSenato}
+
+# elezioni2008
+candidati_vsq:
+  url: /candidati_vsq/:assegnati
+  param: { module: administrator, action: vsqCandidates, assegnati: 1 }
+  
+assegna_candidatof:
+  url: /assegna_candidato/:politician_id/:party_id
+  param: { module: polPoliticalCharges, action: assignVsq2008Candidation }
+
+# inserimento incarico istituzionale
+nuovo_incarico_istituzionale:
+  url: /nuovo_incarico_istituzionale/politico/:politician_id
+  param: { module: polInstitutionCharges, action: create }
+
+# modifica incarico istituzionale
+modifica_incarico_istituzionale:
+  url: /modifica_incarico_istituzionale/:content_id
+  param: { module: polInstitutionCharges, action: edit }
+
+# inserimento incarico politico
+nuovo_incarico_politico:
+  url: /nuovo_incarico_politico/politico/:politician_id
+  param: { module: polPoliticalCharges, action: create }
+
+# modifica incarico politico
+modifica_incarico_politico:
+  url: /modifica_incarico_politico/:content_id
+  param: { module: polPoliticalCharges, action: edit }
+
+# modifica altro incarico
+modifica_altro_incarico:
+  url: /modifica_altro_incarico/:content_id
+  param: { module: polOrgCharges, action: edit }
+
+# tag
+tag_new:
+    url:   /argomento/:slug/:tag
+    param: { module: argument, action: list }
+tag:
+  url:   /argomento/:tag
+  param: { module: argument, action: list }
+  
+
+tag_for_politician:
+  url:   /argomento/:tag/politico/:politician_id
+  param: { module: argument, action: list }
+
+tag_autocomplete:
+  url:   /tag_autocomplete
+  param: { module: tag, action: autocomplete }
+
+tag_add:
+  url:   /tag_add
+  param: { module: tag, action: add }
+
+popular_tags:
+  url:   /popular_tags
+  param: { module: tag, action: popular }
+
+tag_remove:
+  url:   /question/:stripped_title/tag/remove/:tag
+  param: { module: tag, action: remove }
+
+# feeds
+feed_popular_declarations:
+  url:   /feed/popularDeclarations/
+  param: { module: feed, action: popularDeclarations }
+
+feed_last_declarations:
+  url:   /feed/lastDeclarations/
+  param: { module: feed, action: lastDeclarations }
+
+feed_tag_declarations:
+  url:   /feed/tagDeclarations/:tag_id/*
+  param: { module: feed, action: tagDeclarations }
+
+feed_politician_popular_declarations:
+  url:   /feed/politicianPopularDeclarations/:politician_id
+  param: { module: feed, action: politicianPopularDeclarations }
+
+feed_politician_last_declarations:
+  url:   /feed/politicianLastDeclarations/:politician_id
+  param: { module: feed, action: politicianLastDeclarations }
+
+feed_institution_declarations:
+  url:   /feed/institutionDeclarations/:institution_id
+  param: { module: feed, action: institutionDeclarations }
+
+feed_location_declarations:
+  url:   /feed/locationDeclarations/:location_id
+  param: { module: feed, action: locationDeclarations }
+
+feed_last_tags:
+  url:   /feed/lastTags/
+  param: { module: feed, action: lastTags }
+#Rss da xml
+
+RssVoti:
+  url:   /RssVoti/:content_id
+  param: { module: integrazione_cam_sen, action: RssVoti }
+
+RssIndice:
+  url:   /RssIndice/:content_id
+  param: { module: integrazione_cam_sen, action: RssIndice }
+
+RssPresenze:
+  url:   /RssPresenze/:content_id
+  param: { module: integrazione_cam_sen, action: RssPresenze }
+
+RssTotaleIndiceSenato:
+  url:   /RssTotaleIndiceSenato
+  param: { module: integrazione_cam_sen, action: RssTotaleIndiceSenato }
+
+RssTotaleIndiceCamera:
+  url:   /RssTotaleIndiceCamera
+  param: { module: integrazione_cam_sen, action: RssTotaleIndiceCamera }
+
+RssTotalePresenzeSenato:
+  url:   /RssTotalePresenzeSenato
+  param: { module: integrazione_cam_sen, action: RssTotalePresenzeSenato }
+
+RssTotalePresenzeCamera:
+  url:   /RssTotalePresenzeCamera
+  param: { module: integrazione_cam_sen, action: RssTotalePresenzeCamera }
+
+# content
+about:
+  url:   /about
+  param: { module: content, action: about }
+
+
+politician_autocomplete:
+  url:   /solr/politician_autocomplete
+  param: { module: solr, action: politician_autocomplete }
+
+location_autocomplete:
+  url:   /solr/location_autocomplete
+  param: { module: solr, action: location_autocomplete }
+
+argument_autocomplete:
+  url:   /autocompleter/argument_autocomplete
+  param: { module: autocompleter, action: argumentAutocomplete }
+
+location2_autocomplete:
+  url:   /autocompleter/location2_autocomplete
+  param: { module: autocompleter, action: location2_autocomplete }
+
+organization_autocomplete:
+  url:   /autocompleter/organization_autocomplete
+  param: { module: autocompleter, action: organization_autocomplete }
+
+organization_tags_autocomplete:
+  url:   /autocompleter/organizationTagsAutocomplete
+  param: { module: autocompleter, action: organizationTagsAutocomplete }
+
+party_autocomplete:
+  url:   /autocompleter/partyAutocomplete
+  param: { module: autocompleter, action: partyAutocomplete }
+
+group_autocomplete:
+  url:   /autocompleter/groupAutocomplete
+  param: { module: autocompleter, action: groupAutocomplete }
+
+add_comment:
+  url:   /polDeclarations/addComment
+  param: { module: polDeclarations, action: addComment }
+  
+incarichi_multipli:
+    url: /multiple/:ordina
+    param: { module: polInstitutionCharges, action: multipleChargeTitle, ordina: 1 }  
+
+enti_commissariati:
+    url: /enti_commissariati
+    param: { module: polInstitutionCharges, action: entiCommissariati } 
+
+dichiarazioni_patrimoniali:
+    url: /dichiarazioni_patrimoniali
+    param: { module: politician, action: listTaxDeclaration }
+
+dichiarazioni_patrimoniali_new:
+    #url: /dichiarazioni_patrimoniali
+    url: /dichiarazioni-patrimoniali-dei-politici-eletti
+    param: { module: politician, action: listTaxDeclaration }     
+
+pensioni_politici:
+    url: /parlamentari-che-devono-ancora-maturare-la-pensione
+    param: { module: polInstitutionCharges, action: pensioni }  
+
+#routing dei widgets
+widgets:
+  url:   /widgets/:action/:politician_id/:dimesione/:tipo
+  param: { module: widgets }
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+home:
+  url:   /home/:query/:page
+  param: { module: default, action: index}
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

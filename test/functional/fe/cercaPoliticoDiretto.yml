@@ -1,0 +1,10 @@
+# politici da testare per la ricerca senza disambiguazione
+-
+  name: "d'alema" 
+  id:   332
+- 
+  name: "rutelli"
+  id:   702
+- 
+  name: "marchionne"
+  id:   313040

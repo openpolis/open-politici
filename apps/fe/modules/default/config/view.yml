@@ -1,0 +1,58 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+default:
+  has_layout:     on
+
+  components:
+     cloud:       [sidebar, popularClouds]
+     statistics:  [statistics, default]
+
+
+blankIndexSuccess:
+  has_layout:     off
+  
+manutenzioneSuccess:
+  layout:         messageLayout
+  
+politician_autocomplete:
+  has_layout:     off
+
+
+indexSuccess:
+  javascripts:    [-*, "/js/jquery-1.4.4.min.js", "/js/jquery-ui-autocompleter.custom.min.js"]
+  stylesheets:    ["/css/ui-lightness/jquery-ui-1.8.9.custom.css", "autocompleter-customization"]
+
+location_autocomplete:
+  has_layout:     off
+
+location2_autocomplete:
+  has_layout:     off
+
+politiciansHomeSuccess:
+  metas:
+    title:        openpolis - politici
+  components:
+    cloud:        [sidebar, popularClouds]

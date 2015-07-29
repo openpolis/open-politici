@@ -1,0 +1,1 @@
+ALTER TABLE `op_group` ADD UNIQUE INDEX `op_group_name_idx` (`name`);

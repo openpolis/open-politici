@@ -1,0 +1,27 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpSimilarPolitician
+    theme:            batchable
+    css:              my_generator
+
+    fields:
+      original:    { name: 'Originale' }
+      similar:     { name: 'Simile' }
+      resolved:    { name: 'Risolto' }
+#      compares_birth_locations: { name: 'Confronta luogo nascita'}
+      user:        { name: 'Utente ultima modifica'}
+      updated_at:  { name: 'Ultima modifica' }
+      
+    list:
+      title:          "Elenco dei politici simili"
+      peer_method:    doSelectJoinAllExceptOpPoliticianRelatedBySimilarId
+      display:        [_original, _similar, compares_birth_locations, _user, updated_at]
+      filters:        [is_resolved]
+      max_per_page:   10	  
+      object_actions:
+        # dummy - è sovrascritto da _list_td_actions.php (serve comunque)
+        switchCheck: { name: 'Seleziona/Deseleziona come controllato', action: 'switchCheck', icon: '/images/admin_icons/button_ok.png'}
+        keepOriginal: { name: 'Mantieni originale', action: 'keepOriginal', icon: '/images/admin_icons/back.png'}
+        keepSimilar: { name: 'Mantieni simile', action: 'keepSimilar', icon: '/images/admin_icons/forward.png'}
+      actions:       {}

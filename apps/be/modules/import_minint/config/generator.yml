@@ -1,0 +1,20 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpImportMinint
+    theme:            default
+    css:              my_generator
+
+    fields:
+      name:           {name: 'Nome'}
+
+    list:
+      title:          "Sincronizzazioni Minint"
+      display:        [agg_date, description, type]
+      max_per_page:   10
+      sort:           [agg_date, desc]
+      filters:        [type]
+      object_actions:
+        _edit:        - 	  
+      actions:
+        _create:      NONE

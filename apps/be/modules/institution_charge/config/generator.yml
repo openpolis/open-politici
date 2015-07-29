@@ -1,0 +1,53 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpInstitutionCharge
+    theme:            default
+    css:              my_generator
+
+    fields:
+      politician:     { name: 'Politico' }
+      institution:    { name: 'Istituzione' }
+      charge_type:    { name: 'Tipo di incarico' }
+      location:       { name: 'Localit&agrave;' }
+      date_start:     { name: 'Inizio', params: "date_format='dd/MM/yyyy' disabled=true" }
+      date_end:       { name: 'Fine', params: "date_format='dd/MM/yyyy' disabled=true" }
+      description:    { name: 'Descrizione' }
+      removed:        { name: 'Rimosso', params: "date_format='dd/MM/yyyy' disabled=true" }
+      minint_verified_at: { name: 'Verifica MinInt' }
+      content_id:     { name: 'ID', type: 'plain'}
+      
+
+    list:
+      title:          "Elenco degli incarichi istituzionali"
+#      display:        [_politician, _institution, _charge_type, _location, date_start, date_end, description, minint_verified_at]
+      display:        [_id, _politician, _institution,  _charge_type, description, _location, _removed, date_start, date_end, minint_verified_at]
+      filters:        [dummy]
+      actions:        
+        _create:      NONE
+        back:         { name: 'Indietro', action: 'back', icon: '/images/admin_icons/back.png'}

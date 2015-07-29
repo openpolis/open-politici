@@ -1,0 +1,1 @@
+<?php echo $incarichi." (".number_format($incarichi*100/$totale,2)."%)" ?>

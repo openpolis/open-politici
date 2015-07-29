@@ -1,0 +1,1 @@
+<?php echo $op_institution_charge->getOpOpenContent()->getDeletedAt(); ?>

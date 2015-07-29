@@ -1,0 +1,113 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+
+all:
+  # cookies
+  cookies:
+    path:                 '/'
+    domain:               'openpolis.it'
+    sso_name:             'opSSO'
+    remember_name:        'opRemember'
+    remember_key_expiration_age: 604800
+
+  institution_id:
+    CE: 1
+    PE: 2
+    GI: 3
+    CD: 4
+    SR: 5
+    GR: 6
+    CR: 7
+    GP: 8
+    CP: 9
+    GC: 10
+    CC: 11
+    CO: 12
+    PR: 13
+
+  charge_type_id:
+    presidente_repubblica: 19
+    presidente: 1
+    vicepresidente: 2
+    commissario: 3
+    pres_comm: 4
+    deputato: 5	
+    senatore: 6
+    pres_consiglio: 7
+    senatore_vita: 20
+    assessore: 12
+    sottosegretario: 11
+    sindaco:  14
+    commissario_straordinario: 16
+    iscritto: 17
+    carica:   18
+
+  party_type:
+    main:      1
+    secondary: 2
+    regional:  3
+    death:     4
+
+  location_id:
+    europe: 1
+    italy:  2
+
+  location_type_id:
+    european:   2
+    national:   3
+    region:     4
+    provincial: 5
+    municipal:  6
+
+  resource_type:
+    official_mail:   1
+    unofficial_mail: 2
+    official_url:    3
+    unofficial_url:  4
+
+  election_type:
+    europa:   1
+    camera:   2
+    senato:   3
+
+  education_level:
+    elementare:   3
+    media:        4
+    superiore:    5
+    laurea_breve: 6
+    laurea:       7    
+
+  color_tonality:
+    level_1:      3  #più intenso
+    level_2:      2
+    level_3:      1
+    level_4:      5
+    level_5:      4  #meno intenso
+
+  imageclass:
+    medium:       91
+    thumb:        41
+    microthumb:   25

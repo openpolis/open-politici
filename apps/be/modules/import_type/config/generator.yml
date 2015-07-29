@@ -1,0 +1,16 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpImportType
+    theme:            default
+    css:              my_generator
+
+    fields:
+      name:           {name: 'Nome'}
+      
+    list:
+      title:          "Tipologie di import"
+      display:        [name]
+      max_per_page:   10
+      object_actions:
+        _edit:        - 	  

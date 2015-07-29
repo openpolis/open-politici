@@ -1,0 +1,9 @@
+_lastDeclarations:
+  contextual: false
+  enabled: on
+  lifetime: 600
+
+_popularClouds:
+  contextual: true
+  enabled: on
+  lifetime: 600

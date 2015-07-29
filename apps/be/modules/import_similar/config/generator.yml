@@ -1,0 +1,35 @@
+generator:
+  class:              sfBatchablePropelAdminGenerator
+  param:
+    model_class:      OpImportSimilar
+    theme:            batchable
+    css:              my_generator
+
+    fields:
+      new_csv_rec:      { name: 'Nuovo' }
+      old_csv_rec:      { name: 'Vecchio' }
+      context_filter:   { name: "Seleziona il contesto" }
+      location_filter:  { name: "Seleziona la localit&agrave;" }
+      status_filter:    { name: "Seleziona lo status" }
+      n_diffs:          { name: "N diffs" }
+      diffs_filter:   { name: "N differenze" }
+      charges_differ:   { name: "cariche div" }
+      charges_differ_filter:   { name: "Cariche diverse" }
+      names_differ_filter:   { name: "Nomi diversi" }
+      birth_dates_differ_filter:   { name: "Date nascita diverse" }
+      birth_places_differ_filter:   { name: "Luoghi nascita diversi" }
+      
+    list:
+      title:          "Inserimenti/Rimozioni simili"
+      display:        [_new_old, n_diffs, _charges_differ]
+      max_per_page:   15	  
+      object_actions:
+        reject: { name: 'Respingi', action: 'reject', icon: '/images/admin_icons/remove.png'}
+        restore: { name: 'Ripristina', action: 'restore', icon: '/images/admin_icons/button_ok.png'}
+
+      filters:        [_contextFilter, _locationFilter, _statusFilter, _diffsFilter, _chargesDifferFilter, _namesDifferFilter, _birthDatesDifferFilter, _birthPlacesDifferFilter]
+      actions: []
+      batch_actions:
+        rejectSelection:        { name: Rifiuta i selezionati, action: rejectSelection }
+        restoreSelection:        { name: Ripristina i selezionati, action: restoreSelection }
+

@@ -1,0 +1,155 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+prod:
+  .settings:
+    no_script_name: on
+    cache:          on
+
+staging:
+  .settings:
+    no_script_name: off
+    web_debug:      on
+    cache:          on
+
+dev:
+  .settings:
+    # E_ALL | E_STRICT = 4095
+    error_reporting:        2047
+    web_debug:              on
+    cache:                  off
+    stats:                  off
+    no_script_name:         off
+    etag:                   off
+
+test:
+  .settings:
+    # E_ALL | E_STRICT & ~E_NOTICE = 2047
+    error_reporting:        2047
+    cache:                  off
+    stats:                  off
+    web_debug:              off
+    no_script_name:         off
+    etag:                   off
+
+all:
+  .settings:
+    login_module:           sfGuardAuth
+    login_action:           signin
+  
+    secure_module:          sfGuardAuth   
+    secure_action:          secure      
+    
+    error_404_module:       static
+    error_404_action:       404
+
+    unavailable_module:     static
+    unavailable_action:     unavailable
+
+    available:              on
+
+    standard_helpers:       [Partial, Cache, Form, I18N]
+
+    i18n:                   on
+
+    use_database:           on
+
+    enabled_modules:        [sfGuardAuth, sfLightboxPlugin, sfSimpleGoogleSitemap]
+
+    timeout:                14400
+
+    validation_error_prefix:    ''
+    validation_error_suffix:    ''
+
+    prototype_web_dir:      ''
+
+#  .actions:
+#    default_module:         default
+#    default_action:         index
+#
+#    error_404_module:       default
+#    error_404_action:       error404
+#
+#    login_module:           default
+#    login_action:           login
+#
+#    module_disabled_module: default
+#    module_disabled_action: disabled
+#
+#    secure_module:          default
+#    secure_action:          secure
+#
+#    unavailable_module:     default
+#    unavailable_action:     unavailable
+#
+#    available:              on
+#
+#    path_info_array:        SERVER
+#    path_info_key:          PATH_INFO
+#
+#    url_format:             PATH
+#
+#    use_database:           on
+#
+#    use_security:           on
+#
+#    compressed:             on
+#
+#    tidy:                   on
+#
+#
+#    timeout:                1800
+#
+#    suffix:                 .
+#
+#
+#    max_forwards:           5
+#
+#    web_debug:              off
+#
+#    cache:                  off
+#    default_cache_lifetime: 86400
+#
+#    no_script_name:         on
+#
+#    stats:                  off
+#
+#    # E_COMPILE_ERROR | E_ERROR | E_CORE_ERROR | E_USER_ERROR = 337
+#    error_reporting:        337
+#
+#
+#    safe_slot:              on
+#
+#    use_flash:              on
+#
+#
+#    strip_comments:         off
+#
+#    etag:                   on
+#
+#    validation_error_prefix:    ' &darr;&nbsp;'
+#    validation_error_suffix:    ' &nbsp;&darr;'
+#    validation_error_class:     form_error
+#    validation_error_id_prefix: error_for_

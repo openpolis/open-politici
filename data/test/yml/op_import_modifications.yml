@@ -1,0 +1,69 @@
+OpImportModifications:
+  reg_new_1:
+    context:  "reg"
+    rec_type: "new"
+    location_id: 4
+    csv_rec: "02|VALLE D'AOSTA|ISABELLON|GIUSEPPE|M|28/05/1953|AOSTA (AO)|Consigliere"  
+
+  reg_new_2:
+    context:  "reg"
+    rec_type: "new"
+    location_id: 4
+    csv_rec: "02|VALLE D'AOSTA|LAVOYER|CLAUDIO|M|31/07/1952|CHAMBAVE (AO)|Consigliere"
+  
+  reg_new_3:
+    context:  "reg"
+    rec_type: "new"
+    location_id: 5
+    csv_rec: "03|LOMBARDIA|ABELLI|GIAN CARLO|M|11/05/1941|BRONI (PV)|Consigliere"
+
+  reg_new_4:
+    context:  "reg"
+    rec_type: "new"
+    location_id: 7
+    csv_rec: "05|VENETO|BAGGIO|LUCA|M|06/01/1963|CASTELFRANCO VENETO (TV)|Consigliere"
+    
+  reg_old_1:
+    context:  "reg"
+    rec_type: "old"
+    location_id: 3
+    csv_rec: "01|PIEMONTE|NOVERO|GIANFRANCO|M|22/06/1942|CIRIÃ¨ (TO)|Consigliere"
+    
+  reg_old_2:
+    context:  "reg"
+    rec_type: "old"
+    location_id: 3
+    csv_rec: "01|PIEMONTE|LEARDI|LORENZO|M|07/06/1965|VERCELLI (VC)|Consigliere"
+
+  reg_old_3:
+    context:  "reg"
+    rec_type: "old"
+    location_id: 5
+    csv_rec: "03|LOMBARDIA|ALLI|PAOLO|M|01/01/1950|MILANO (MI)|Sottosegretario"
+
+  reg_old_4:
+    context:  "reg"
+    rec_type: "old"
+    location_id: 5
+    csv_rec: "03|LOMBARDIA|CAVALLI|ALBERTO|M|17/03/1953|BRESCIA (BS)|Sottosegretario"
+
+  prov_new:
+    context:  "prov"
+    rec_type: "new"
+    location_id: 27
+    csv_rec: "01|007|ASTI|AT|CRIVELLI|MARCO|M|25/11/1951|ASTI (AT)|Consigliere"
+  prov_old:
+    context:  "prov"
+    rec_type: "old"
+    location_id: 27
+    csv_rec: "01|007|ASTI|AT|SCANAVINO|SECONDO|M|19/09/1960|CALAMANDRANA (AT)|Consigliere"
+  com_new:
+    context:  "com.001"
+    rec_type: "new"
+    location_id: 7155
+    csv_rec: "19|001|0010|AGRIGENTO|AG|CORDARO|ELIO|M|13/04/1947|SERRADIFALCO (CL)|Assessore"
+  com_old:
+    context:  "com.001"
+    rec_type: "old"
+    location_id: 7155
+    csv_rec: "19|001|0050|BURGIO|AG|FERRANTELLI|VITO|M|||Sindaco"

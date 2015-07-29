@@ -1,0 +1,70 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+all:
+  storage:
+    class: sfCreoleSessionStorage
+    param:
+      database: propel
+      db_table: op_session
+
+cli:
+  controller:
+    class: myConsoleController
+  request:
+    class: myConsoleRequest
+
+test:
+  storage:
+    class: sfSessionTestStorage
+
+<?php if (sfConfig::get('sf_is_memcache_active', false)): ?>
+all:
+  view_cache:
+    class: sfMemcacheCache
+<?php endif; ?>
+
+#  controller:
+#    class: myFrontWebController
+#
+#  request:
+#    class: myWebRequest
+#
+#  user:
+#    class: myUser
+#
+#  storage:
+#    class: sfSessionStorage
+#    param:
+#      session_name: symfony
+#
+#  execution_filter:
+#    class: sfExecutionFilter
+#
+#  security_filter:
+#    class: sfBasicSecurityFilter
+#
+#  view_cache:
+#    class: sfFileCache

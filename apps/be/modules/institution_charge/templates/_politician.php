@@ -1,0 +1,1 @@
+<?php echo $op_institution_charge->getOpPolitician() . " - " . $op_institution_charge->getOpPolitician()->getBirthDate('d/m/Y') ; ?>

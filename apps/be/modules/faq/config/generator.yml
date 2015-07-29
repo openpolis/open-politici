@@ -1,0 +1,54 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpFaq
+    theme:            default
+    css:              my_generator
+
+    list:
+      title:          "Elenco delle faq"
+      display:        [question, answer, _faq_group_name]
+      max_per_page:   20	  
+      object_actions:
+        _edit:        -
+
+    edit:
+      title:          "Modifica di una faq"
+      display:        [question, answer, faq_group_id]
+      fields:
+        question: 
+          name: "Domanda"
+          type: "textarea_tag"
+          params: "rows=8 cols=80"
+        answer: 
+          name: "Risposta"
+          type: "textarea_tag"
+          params: "rows=8 cols=80"
+        faq_group_id:
+          name: "Gruppo"
+          params: "include_blank=false"

@@ -1,0 +1,4 @@
+config/search.yml:
+  class: sfDefineEnvironmentConfigHandler
+  param:
+    prefix: search_

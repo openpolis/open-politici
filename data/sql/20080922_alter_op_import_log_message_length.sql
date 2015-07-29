@@ -1,0 +1,1 @@
+alter table op_import_log change column message message varchar(8192) default null;

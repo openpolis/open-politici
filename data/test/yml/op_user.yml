@@ -1,0 +1,29 @@
+OpUser:
+  admin:
+    id: 1
+    nickname: admin
+    first_name: Administrator
+    last_name: User
+    email: guglielmo.celata@gmail.com
+    password: Vakka94
+    is_administrator: 1
+    is_moderator: 1
+
+  moderator:
+    id: 2
+    nickname: moderator
+    first_name: Modera
+    last_name: Moderatio
+    email: modera@bbs.olografix.org
+    password: moderator
+    is_moderator: 1
+   
+  user:
+    id: 3
+    nickname: user
+    first_name: Utente
+    last_name: Utenza
+    email: user@rmnet.it
+    password: user
+  
+  

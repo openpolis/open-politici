@@ -1,0 +1,89 @@
+<?php
+
+require_once 'propel/map/MapBuilder.php';
+include_once 'creole/CreoleTypes.php';
+
+
+/**
+ * This class adds structure of 'op_party' table to 'propel' DatabaseMap object.
+ *
+ *
+ *
+ * These statically-built map classes are used by Propel to do runtime db structure discovery.
+ * For example, the createSelectSql() method checks the type of a given column used in an
+ * ORDER BY clause to know whether it needs to apply SQL to make the ORDER BY case-insensitive
+ * (i.e. if it's a text column type).
+ *
+ * @package    lib.model.map
+ */
+class OpPartyMapBuilder {
+
+	/**
+	 * The (dot-path) name of this class
+	 */
+	const CLASS_NAME = 'lib.model.map.OpPartyMapBuilder';
+
+	/**
+	 * The database map.
+	 */
+	private $dbMap;
+
+	/**
+	 * Tells us if this DatabaseMapBuilder is built so that we
+	 * don't have to re-build it every time.
+	 *
+	 * @return     boolean true if this DatabaseMapBuilder is built, false otherwise.
+	 */
+	public function isBuilt()
+	{
+		return ($this->dbMap !== null);
+	}
+
+	/**
+	 * Gets the databasemap this map builder built.
+	 *
+	 * @return     the databasemap
+	 */
+	public function getDatabaseMap()
+	{
+		return $this->dbMap;
+	}
+
+	/**
+	 * The doBuild() method builds the DatabaseMap
+	 *
+	 * @return     void
+	 * @throws     PropelException
+	 */
+	public function doBuild()
+	{
+		$this->dbMap = Propel::getDatabaseMap('propel');
+
+		$tMap = $this->dbMap->addTable('op_party');
+		$tMap->setPhpName('OpParty');
+
+		$tMap->setUseIdGenerator(true);
+
+		$tMap->addColumn('ISTAT_CODE', 'IstatCode', 'string', CreoleTypes::VARCHAR, false, 15);
+
+		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 80);
+
+		$tMap->addColumn('ACRONYM', 'Acronym', 'string', CreoleTypes::VARCHAR, false, 20);
+
+		$tMap->addColumn('PARTY', 'Party', 'int', CreoleTypes::TINYINT, false, null);
+
+		$tMap->addColumn('MAIN', 'Main', 'int', CreoleTypes::TINYINT, false, null);
+
+		$tMap->addColumn('ELECTORAL', 'Electoral', 'int', CreoleTypes::TINYINT, false, null);
+
+		$tMap->addColumn('OID', 'Oid', 'int', CreoleTypes::INTEGER, false, null);
+
+		$tMap->addColumn('ONAME', 'Oname', 'string', CreoleTypes::VARCHAR, false, 80);
+
+		$tMap->addColumn('LOGO', 'Logo', 'string', CreoleTypes::VARBINARY, false, null);
+
+		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+
+	} // doBuild()
+
+} // OpPartyMapBuilder

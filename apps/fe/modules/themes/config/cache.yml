@@ -1,0 +1,3 @@
+list:
+  enabled: on
+  lifetime: 86400

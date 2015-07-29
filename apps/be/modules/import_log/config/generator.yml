@@ -1,0 +1,28 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpImportLog
+    theme:            default
+    css:              my_generator
+
+    fields:
+      created_at:     { name: 'at', params: date_format='hh:mm:ss' }
+      counter:        { name: 'cnt' }
+      type:           { name: 'Tipo' }
+      importing_data: { name: 'Dati in import' }
+      status:         { name: 'Stato' }
+      message:        { name: 'Messaggio' }
+      
+    list:
+      title:          "Log dell'import"
+      peer_method:    doSelectJoinOpImport
+      display:        [counter, created_at, importing_data, status, message]
+      max_per_page:   20	  
+      # dummy - è sovrascritto da addFiltersCriteria (serve comunque)
+      filters:        [_type, importing_data, _status, message, import_id]
+      object_actions:
+        # dummy - è sovrascritto da _list_td_actions.php (serve comunque)
+        switchCheck: { name: 'Seleziona/Deseleziona come controllato', action: 'switchCheck', icon: '/images/admin_icons/button_ok.png'}
+      actions:
+        create:      NONE
+        back:         { name: 'Torna a elenco import', action: 'back', icon: '/images/admin_icons/back.png'}

@@ -1,0 +1,45 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+rendering: ~
+web_debug: ~
+security:  ~
+
+# generally, you will want to insert your own filters here
+
+# filter that checks if a remember cookie exists and automatically logs the user in
+rememberFilter:
+  class: sfRemoteGuardRememberFilter
+  
+# filter that cheks if an sso cookie exists and automatically logs the user in
+ssoFilter:
+  class: sfRemoteGuardSsoFilter
+
+
+
+cache:     ~
+common:    ~
+flash:     ~
+execution: ~

@@ -1,0 +1,1 @@
+alter table op_theme add column vsq08 tinyint(1);

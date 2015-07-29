@@ -1,0 +1,12 @@
+# parametri per la connessione al solr
+dev:
+  query_debug: 1
+
+# parametri per la connessione al solr
+all:
+  query_debug: 0
+  solr:
+    host: "localhost"
+    port: "8080"
+    path: "/openpolitici"
+    

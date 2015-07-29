@@ -1,0 +1,68 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpPolitician
+    theme:            default
+    css:              my_generator
+    
+    fields:
+      first_name:       {name: "Nome"}
+      last_name:        {name: "Cognome"}
+      sex:              {name: "Sesso"}
+      birth_date:       {name: "Data di nascita", params: date_format='dd/MM/yy'}
+      picture:          {name: "Immagine"}
+      death_date:       {name: "Data eventuale decesso", params: date_format='dd/MM/yy'}
+      birth_location:   {name: "Localit&agrave; di nascita"}
+      last_charge_update: {name: "Data ultimo incarico", params: date_format='dd/MM/yy'}
+      num_incarichi:    {name: "N. incarichi"}
+      institutioncharges: {name: '' }
+
+    list:
+      title:          "Elenco dei politici"
+      display:        [last_name, first_name, birth_date, sex, minint_aka, _num_incarichi, last_charge_update]
+      max_per_page:   20	  
+      filters:        [first_name, last_name, last_charge_update]
+      object_actions:
+        _edit:        -
+
+    # generato automaticamente, poi aggiunto il metodo updateOpPoliticianFromRequest in override
+    # nelle actions, per via del valore &nbsp; di default del campo minint_aka
+    edit:
+      title:          "Modifica anagrafica di un Politico"
+      fields:
+        last_charge_update: { name: "Data ultimo incarico", type: "input_date_tag", params: "date_format='dd/MM/YYYY' disabled=true" }
+        sex:          { name: "Sesso (M/F)" }
+        
+      display:        
+        NONE:         [first_name, last_name, minint_aka, birth_date, sex, death_date, _picture, birth_location, last_charge_update ]
+        'Incarichi istituzionali':  [~institutioncharges]
+      actions:
+        _list:        -
+        _save:        -
+        _delete:      -
+        back:         { name: 'Torna al report', action: 'back', icon: '/images/admin_icons/back.png'}

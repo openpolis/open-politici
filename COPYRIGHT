@@ -1,0 +1,40 @@
+COPYRIGHTS
+==========
+
+di seguito sono elencati i copyright dei software principali utilizzati
+
+openpolis
+---------
+openpolis e' un progetto per la trasparenza della politica
+
+Url:       http://www.openpolis.it
+Copyright: Associazione Democrazia Elettronica e Partecipazione Pubblica
+Licenza:   GPL versione 2 - vedere i file licenze/GPL-2.0-EN.txt o licenze/GPL-2.0-IT.txt
+
+
+symfony
+-------
+openpolis e' costruito con il framework symfony, basato a sua volta, in origine, su Mojavi3, di Sean Kerr
+
+Url:       http://www.symfony-project.com/
+Copyright: Fabien Potencier
+License:   MIT - vedere il file licenze/symfony.LICENSE
+
+
+Solr PHP client
+---------------
+openpolis contiene il package solr PHP client
+
+Url:       https://issues.apache.org/jira/browse/SOLR-341
+Copyright: Conduit Internet Technologies, Inc. (http://conduit-it.com)
+License:   Apache License, Version 2.0 - vedere il file licenze/apache.LICENSE
+
+
+Solr
+----
+openpolis utilizza il software Solr
+
+Url:       http://lucene.apache.org/solr/
+Copyright: The Apache Software Foundation
+License:   Apache License, Version 2.0 - vedere il file licenze/apache.LICENSE
+

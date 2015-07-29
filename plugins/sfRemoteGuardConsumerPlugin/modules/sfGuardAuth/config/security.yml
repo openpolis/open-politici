@@ -1,0 +1,8 @@
+secureSuccess:
+  is_secure: off
+
+signinSuccess:
+  is_secure: off
+
+signoutSuccess:
+  is_secure: off

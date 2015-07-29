@@ -1,0 +1,1 @@
+ALTER TABLE `op_verified_content` CHANGE `operation` `operation` VARCHAR(255);

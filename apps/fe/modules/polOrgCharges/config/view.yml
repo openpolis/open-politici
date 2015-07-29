@@ -1,0 +1,11 @@
+all:
+  layout:         politiciansLayout
+
+organizationLookupSuccess:
+  has_layout:     off
+
+editSuccess:
+  javascripts:    [scriptaculous]
+  
+editInPlaceSuccess:
+  has_layout:     off

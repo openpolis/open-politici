@@ -1,0 +1,33 @@
+generator:
+  class:              sfBatchablePropelAdminGenerator
+  param:
+    model_class:      OpImportModifications
+    theme:            batchable
+    css:              my_generator
+
+    fields:
+      csv:              { name: 'CSV' }
+      csv_rec:          { name: 'Record CSV' }
+      import_filter:    { name: "Seleziona l'import" }
+      context_filter:   { name: "Seleziona il contesto" }
+      location_filter:  { name: "Seleziona la localit&agrave;" }
+      status_filter:    { name: "Seleziona lo status" }
+      concretised_at:   { name: "DB"}
+      action_type:      { name: "Codice" }
+    list:
+      title:          "Incarichi da aggiungere"
+      display:        [_csv, concretised_at, action_type]
+      max_per_page:   50
+      object_actions:
+        reject: { name: 'Respingi', action: 'reject', icon: '/images/admin_icons/disable.png'}
+        restore: { name: 'Ripristina', action: 'restore', icon: '/images/admin_icons/button_ok.png'}
+        concretise: { name: 'Aggiungi al DB', action: 'concretise', icon: '/images/admin_icons/run.png'}
+
+      filters:        [_importFilter, _contextFilter, _locationFilter, _statusFilter]
+      actions:
+        concretise: { name: 'Aggiungi al DB', action: 'concretiseAll', icon: '/images/admin_icons/run.png'}
+        
+      batch_actions:
+        rejectSelection:        { name: Rifiuta i selezionati, action: rejectSelection }
+        restoreSelection:       { name: Ripristina i selezionati, action: restoreSelection }
+        concretiseSelection:       { name: Aggiungi i selezionati al DB, action: concretiseSelection }

@@ -1,0 +1,1 @@
+alter table op_user add column themes int(10) default 0 after declarations;

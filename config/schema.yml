@@ -1,0 +1,507 @@
+propel: 
+  op_charge_type: 
+    name:                 { type: varchar(255) }
+    short_name:           { type: varchar(455) }
+    priority:             { type: integer, default: 0 }
+    category:             { type: varchar(1), required: true, default: 'I' }
+
+  op_comment: 
+    user_id:              { type: integer, required: true, index: true, foreignTable: op_user, foreignReference: id }
+    content_id:           { type: integer, required: true, index: true, foreignTable: op_opinable_content, foreignReference: content_id, onDelete: CASCADE }
+    body:                 { type: longvarchar }
+    html_body:            { type: longvarchar }
+    relevancy_score_up:   { type: integer, required: true, default: 0 }
+    relevancy_score_down: { type: integer }
+    created_at:
+    updated_at:
+    reports:              { type: integer, required: true, default: 0 }
+
+  op_comment_report: 
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+    comment_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_comment, foreignReference: id, onDelete: CASCADE }
+    created_at:           { type: timestamp }
+    notes:                { type: longvarchar }
+    report_type:          { type: varchar(1) }
+
+  op_constituency: 
+    election_type_id:     { type: integer, required: true, index: true, foreignTable: op_election_type, foreignReference: id }
+    name:                 { type: varchar(255) }
+    valid:                { type: tinyint }
+    slug:                 { type: varchar(128) }
+
+  op_constituency_location: 
+    constituency_id:      { type: integer, required: true, primaryKey: true, foreignTable: op_constituency, foreignReference: id }
+    location_id:          { type: integer, required: true, primaryKey: true, foreignTable: op_location, foreignReference: id }
+ 
+  op_content: 
+    reports:              { type: integer, required: true, default: 0 }
+    created_at:           { type: timestamp, index: true }
+    updated_at:           { type: timestamp, index: true }
+    op_table:             { type: varchar(128) }
+    op_class:             { type: varchar(128) }
+    hash:                 { type: varchar(32) }
+
+  op_declaration: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_opinable_content, foreignReference: content_id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    date:                 { type: TIMESTAMP }
+    title:                { type: varchar(255), required: true }
+    text:                 { type: longvarchar, required: true }
+    relevancy_score:      { type: integer, default: 0 }
+    source_name:          { type: varchar(255), required: true }
+    source_url:           { type: varchar(255) }
+    source_file:          { type: varbinary }
+    source_mime:          { type: varchar(40) }
+    source_size:          { type: integer }
+    slug:                 { type: varchar(300) }
+
+
+  op_education_level:
+    description:          { type: varchar(255), required: true, index: true }
+    oid:                  { type: integer }
+    odescription:         { type: varchar(255) }
+
+  op_election_type: 
+    name:                 { type: varchar(32), required: true }
+
+  op_faq: 
+    answer:               { type: longvarchar }
+    question:             { type: longvarchar }
+    faq_group_id:         { type: integer, index: true, foreignTable: op_faq_group, foreignReference: id }
+
+  op_faq_group: 
+    name:                 { type: varchar(255) }
+
+  op_friend:
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+    friend_id:            { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+     
+  op_group: 
+    name:                 { type: varchar(255), index: unique }
+    acronym:              { type: varchar(80) }
+    oid:                  { type: integer }
+    oname:                { type: varchar(80) }
+
+  op_group_location: 
+    group_id:             { type: integer, required: true, primaryKey: true, foreignTable: op_group, foreignReference: id }
+    location_id:          { type: integer, required: true, primaryKey: true, foreignTable: op_location, foreignReference: id }
+
+  op_holder_has_position_on_theme: 
+    theme_id:             { type: integer, required: true, index: true, foreignTable: op_theme, foreignReference: content_id, onDelete: CASCADE }
+    party_id:             { type: integer, index: true, foreignTable: op_party, foreignReference: id, onDelete: CASCADE }
+    politician_id:        { type: integer, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    holder_type:          { type: varchar(1), required: true }
+
+  op_import: 
+    import_type_id:       { type: integer, required: true, index: true, foreignTable: op_import_type, foreignReference: id }
+    import_minint_id:     { type: integer, required: true, index: true, foreignTable: op_import_minint, foreignReference: id }
+    import_file:          { type: varchar(255) }
+    import_location:      { type: varchar(255) }
+    started_at:           { type: timestamp }
+    finished_at:          { type: timestamp }
+    run_type:             { type: varchar(3) }
+    total:                { type: integer }
+    errors:               { type: integer }
+    warnings:             { type: integer }
+    inserted:             { type: integer }
+
+  op_import_log: 
+    import_id:            { type: integer, required: true, index: true, foreignTable: op_import, foreignReference: id }
+    counter:              { type: integer, required: true, index: true }
+    type:                 { type: varchar(1), required: true, index: true }
+    created_at:           { type: timestamp }
+    importing_data:       { type: longvarchar }
+    status:               { type: varchar(5), required: true, index: true }
+    message:              { type: longvarchar }
+
+  # type: MI, MD, AM (Min Integrale, Min Delta, A Mano)
+  op_import_minint: 
+    agg_date:             { type: varchar(8), required: true, default: '00000000', index: unique }
+    type:                 { type: varchar(2) }
+    description:          { type: varchar(255) }
+
+  op_import_type: 
+    name:                 { type: varchar(32), required: true, index: unique }
+
+  op_import_user_check: 
+    import_file:          { type: varchar(255), required: true, primaryKey: true }
+    import_log_counter:   { type: integer, required: true, primaryKey: true, default: 0 }
+    user_id:              { type: integer, required: true, index: true, foreignTable: op_user, foreignReference: id, onDelete: CASCADE }
+    created_at:           { type: timestamp }
+
+  op_institution: 
+    name:                 { type: varchar(255) }
+    short_name:           { type: varchar(45) }
+    priority:             { type: integer, default: 0 }
+    slug:                 { type: varchar(300) }
+
+  op_institution_charge: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    institution_id:       { type: integer, required: true, index: true, foreignTable: op_institution, foreignReference: id }
+    charge_type_id:       { type: integer, required: true, index: true, foreignTable: op_charge_type, foreignReference: id }
+    location_id:          { type: integer, index: true, foreignTable: op_location, foreignReference: id }
+    constituency_id:      { type: integer, index: true, foreignTable: op_constituency, foreignReference: id }
+    party_id:             { type: integer, required: true, default: 1, index: true, foreignTable: op_party, foreignReference: id }
+    group_id:             { type: integer, required: true, default: 1, index: true, foreignTable: op_group, foreignReference: id }
+    date_start:           { type: date }
+    date_end:             { type: date }
+    description:          { type: varchar(255)}
+    minint_verified_at:   { type: timestamp }
+
+  op_institution_has_charge_type: 
+    institution_id:       { type: integer, required: true, primaryKey: true, foreignTable: op_institution, foreignReference: id }
+    charge_type_id:       { type: integer, required: true, primaryKey: true, foreignTable: op_charge_type, foreignReference: id }
+
+  op_loc_adoption: 
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id, onDelete: CASCADE }
+    location_id:          { type: integer, required: true, primaryKey: true, foreignTable: op_location, foreignReference: id, onDelete: CASCADE }
+    requested_at:         { type: timestamp }
+    granted_at:           { type: timestamp }
+    revoked_at:           { type: timestamp }
+    refused_at:           { type: timestamp }
+
+  op_location: 
+    location_type_id:     { type: integer, required: true, index: true, foreignTable: op_location_type, foreignReference: id }
+    name:                 { type: varchar(255), index: true }
+    macroregional_id:     { type: integer, index: true }
+    regional_id:          { type: integer, index: true }
+    provincial_id:        { type: integer, index: true }
+    city_id:              { type: integer, index: true }
+    prov:                 { type: varchar(2), index: true }
+    inhabitants:          { type: integer }
+    last_charge_update:   { type: timestamp }
+    alternative_name:     { type: varchar(255) }
+    minint_regional_code: { type: integer, index: true }
+    minint_provincial_code: { type: integer, index: true }
+    minint_city_code:     { type: integer, inde: true }
+    date_end:             { type: date }
+    date_start:           { type: date }
+    new_location_id:      { type: integer }
+    gps_lat:              { type: float }
+    gps_lon:              { type: float }
+    slug:                 { type: varchar(300) }
+    
+  op_location_type: 
+    name:                 { type: varchar(32), required: true }
+    
+  op_election:
+    election_date:        { type: date }         
+    election_type_id:     { type: integer, required: true, index: true, foreignTable: op_election_type, foreignReference: id, onDelete: CASCADE }
+    location_id:          { type: integer, required: true, index: true, foreignTable: op_location, foreignReference: id, onDelete: CASCADE }
+    _uniques: 
+      uq_idx: [election_date, election_type_id, location_id] 
+    
+
+  op_message: 
+    user_id:              { type: integer, required: true, index: true, foreignTable: op_user, foreignReference: id }
+    subject:              { type: varchar(255), required: true }
+    body:                 { type: longvarchar, required: true }
+    body_html:            { type: longvarchar }
+    archive_status:       { type: integer, required: true, default: 0 }
+    delete_status:        { type: integer }
+    created_at:           { type: timestamp }
+
+  op_obscured_content: 
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+    created_at:           { type: timestamp }
+    reason:               { type: longvarchar }
+
+  op_open_content: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_content, foreignReference: id, onDelete: CASCADE }
+    user_id:              { type: integer, required: true, index: true, foreignTable: op_user, foreignReference: id }
+    updater_id:           { type: integer, index: true, foreignTable: op_user, foreignReference: id }
+    verified_at:          { type: timestamp }
+    deleted_at:           { type: timestamp }
+
+  op_verified_content:
+    id:
+    user_id:              { type: integer, required: true, index: true, foreignTable: op_user, foreignReference: id }
+    content_id:           { type: integer, required: true, index: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+    created_at:
+    operation:            { type: varchar(255) }
+
+  op_opinable_content: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+
+  op_organization: 
+    name:                 { type: varchar(255) } 
+    url:                  { type: varchar(255) } 
+
+  # TODO: decidere se organization_id è required o meno
+  op_organization_charge: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    date_start:           { type: date }
+    date_end:             { type: date }
+    charge_name:          { type: varchar(255) }
+    organization_id:      { type: integer, index: true, foreignTable: op_organization, foreignReference: id }
+    current:              { type: tinyint }
+
+  op_organization_has_op_organization_tag: 
+    organization_id:      { type: integer, primaryKey: true, foreignTable: op_organization, foreignReference: id }
+    organization_tag_id:  { type: integer, primaryKey: true, foreignTable: op_organization_tag, foreignReference: id }
+
+  op_organization_tag: 
+    id: 
+    name:                 { type: varchar(32), required: true }
+
+  op_party:      
+    istat_code:           { type: varchar(15) }
+    name:                 { type: varchar(80), required: true, index: unique }
+    acronym:              { type: varchar(20) }
+    party:                { type: tinyint, default: 0 }
+    main:                 { type: tinyint, default: 0 }
+    electoral:            { type: tinyint, default: 0 }
+    oid:                  { type: integer }
+    oname:                { type: varchar(80) }
+    logo:                 { type: varbinary }
+
+  op_party_location: 
+    party_id:             { type: integer, required: true, primaryKey: true, foreignTable: op_party, foreignReference: id, onDelete: CASCADE }
+    location_id:          { type: integer, required: true, primaryKey: true, foreignTable: op_location, foreignReference: id }
+
+  op_phase_type: 
+    name:                 { type: varchar(32), required: true }
+
+  op_pol_adoption: 
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, primaryKey: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    requested_at:         { type: timestamp }
+    granted_at:           { type: timestamp }
+    revoked_at:           { type: timestamp }
+    refused_at:           { type: timestamp }
+
+  op_political_charge: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+    charge_type_id:       { type: integer, required: true, index: true, foreignTable: op_charge_type, foreignReference: id }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    location_id:          { type: integer, required: true, index: true, foreignTable: op_location, foreignReference: id }
+    party_id:             { type: integer, required: true, index: true, foreignTable: op_party, foreignReference: id }
+    date_start:           { type: date }
+    date_end:             { type: date }
+    description:          { type: varchar(255)}
+    current:              { type: tinyint }
+
+  op_politician: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_content, foreignReference: id, onDelete: CASCADE }
+    profession_id:        { type: integer, index: true, foreignTable: op_profession, foreignReference: id }
+    user_id:              { type: integer, index: true, foreignTable: op_user, foreignReference: id }
+    creator_id:           { type: integer, index: true, foreignTable: op_user, foreignReference: id }
+    first_name:           { type: varchar(64), index: true }
+    last_name:            { type: varchar(64), index: true }
+    sex:                  { type: varchar(1), index: true }
+    picture:              { type: varbinary }
+    birth_date:           { type: timestamp, index: true }
+    birth_location:       { type: varchar(128), index: true }
+    death_date:           { type: timestamp }
+    last_charge_update:   { type: timestamp }
+    is_indexed:           { type: tinyint, required: true, default: 0 }
+    minint_aka:           { type: varchar(255), index: unique }
+    slug:                 { type: varchar(300) }
+
+  op_politician_has_op_education_level: 
+    politician_id:        { type: integer, required: true, primaryKey: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    education_level_id:   { type: integer, required: true, primaryKey: true, foreignTable: op_education_level, foreignReference: id, onDelete: CASCADE }
+    description:          { type: varchar(255) }
+
+  op_proc_phase: 
+    status_type_id:       { type: integer, required: true, index: true, foreignTable: op_status_type, foreignReference: id }
+    phase_type_id:        { type: integer, required: true, index: true, foreignTable: op_phase_type, foreignReference: id }
+    procedimento_id:      { type: integer, required: true, index: true, foreignTable: op_procedimento, foreignReference: content_id, onDelete: CASCADE }
+    sentence:             { type: longvarchar }
+    motivation:           { type: longvarchar }
+    source_name:          { type: varchar(255) }
+    source_url:           { type: varchar(255) }
+    source_attach:        { type: varbinary }
+    phase_year:           { type: integer }
+    tribunal_location:    { type: varchar(255) }
+
+  op_procedimento: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_opinable_content, foreignReference: content_id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id }
+    date:                 { type: date }
+    title:                { type: varchar(80) }
+    description:          { type: longvarchar }
+    alleged_crimes:       { type: longvarchar }
+
+  op_profession: 
+    description:          { type: varchar(255), required: true, unique: true}
+    oid:                  { type: integer }
+    odescription:         { type: varchar(255) }
+
+  op_relevancy: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_opinable_content, foreignReference: content_id, onDelete: CASCADE }
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+    score:                { type: integer, required: true, default: 0 }
+    created_at:           { type: timestamp }
+
+  op_relevancy_comment: 
+    comment_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_comment, foreignReference: id, onDelete: CASCADE }
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+    score:                { type: integer, required: true, default: 0 }
+    created_at:           { type: timestamp }
+    updated_at:           { type: timestamp }
+
+  op_report: 
+    user_id:              { type: integer, required: true, primaryKey: true, foreignTable: op_user, foreignReference: id }
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_content, foreignReference: id, onDelete: CASCADE }
+    created_at:           { type: timestamp }
+    notes:                { type: longvarchar }
+    report_type:          { type: varchar(1) 
+
+  op_required_funds: 
+    donors:               { type: integer }
+    needed:               { type: integer, required: true, default: 0 }
+    raised:               { type: integer, required: true, default: 0 }
+    spent:                { type: integer }
+    created_at:           { type: timestamp }
+
+  op_requiring_user: 
+    email:                { type: varchar(128) }
+    beta:                 { type: tinyint, required: true, default: 0 }
+    created_at:           { type: timestamp }
+
+  op_resources: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_open_content, foreignReference: content_id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    resources_type_id:    { type: integer, required: true, index: true, foreignTable: op_resources_type, foreignReference: id }
+    valore:               { type: varchar(255) }
+    descrizione:          { type: longvarchar }
+
+  op_resources_type: 
+    resource_type:        { type: varchar(80) }
+
+  op_session: 
+    sess_id:              { type: varchar(32), required: true, primaryKey: true }
+    sess_data:            { type: longvarchar, required: true }
+    sess_time:            { type: integer, required: true, index: true, default: 0 }
+
+  op_status_type: 
+    name:                 { type: varchar(32), required: true }
+
+  op_tag: 
+    tag:                  { type: varchar(80), required: true }
+    normalized_tag:       { type: varchar(80), index: unique }
+    created_at:           { type: timestamp }
+    updated_at:           { type: timestamp }
+
+  op_tag_has_op_opinable_content: 
+    tag_id:               { type: integer, required: true, primaryKey: true, foreignTable: op_tag, foreignReference: id, onDelete: CASCADE }
+    opinable_content_id:  { type: integer, required: true, primaryKey: true, foreignTable: op_opinable_content, foreignReference: content_id, onDelete: CASCADE }
+    user_id:              { type: integer, required: true, index: true, foreignTable: op_user, foreignReference: id }
+    is_obscured:          { type: integer, default: 0 }
+
+  op_theme: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_opinable_content, foreignReference: content_id, onDelete: CASCADE }
+    title:                { type: varchar(255), required: true, index: unique }
+    description:          { type: longvarchar, required: true }
+    relevancy_score:      { type: integer, default: 0 }
+    vsq08:                { type: tinyint }
+
+  op_theme_has_declaration: 
+    declaration_id:       { type: integer, required: true, primaryKey: true, foreignTable: op_declaration, foreignReference: content_id, onDelete: CASCADE }
+    theme_id:             { type: integer, required: true, primaryKey: true, foreignTable: op_theme, foreignReference: content_id, onDelete: CASCADE }
+    party_id:             { type: integer, index: true, foreignTable: op_party, foreignReference: id, onDelete: SET NULL }
+    position:             { type: TINYINT, required: true, default: 0 }
+    created_at:           
+    
+  op_theme_has_location: 
+    theme_id:             { type: integer, required: true, primaryKey: true, foreignTable: op_theme, foreignReference: content_id, onDelete: CASCADE }
+    location_id:          { type: integer, required: true, primaryKey: true, foreignTable: op_location, foreignReference: id, onDelete: CASCADE }
+
+  op_user: 
+    id:                   { type: integer, required: true, primaryKey: true }
+    location_id:          { type: integer, index: true, foreignTable: op_location, foreignReference: id }
+    first_name:           { type: varchar(100) }
+    last_name:            { type: varchar(100) }
+    nickname:             { type: varchar(16) }
+    is_active:            { type: tinyint, required: true, default: 0 }
+    email:                { type: varchar(100), required: true, default: ''}
+    sha1_password:        { type: varchar(40), index: unique }
+    salt:                 { type: varchar(32) }
+    want_to_be_moderator: { type: integer, default: 0 }
+    is_moderator:         { type: integer, default: 0 }
+    is_administrator:     { type: integer, default: 0 }
+    is_aggiungitor:       { type: integer, default: 0 }
+    is_premium:           { type: boolean }
+    is_adhoc:             { type: boolean }
+    deletions:            { type: integer }
+    created_at:           { type: timestamp }
+    picture:              { type: varbinary }
+    url_personal_website: { type: varchar(255) }
+    notes:                { type: longvarchar }
+    has_paypal:           { type: integer, default: 0 }
+    remember_key:         { type: varchar(64) }
+    wants_newsletter:     { type: tinyint, required: true, default: 0 }
+    public_name:          { type: tinyint, required: true, default: 1 }
+    charges:              { type: integer, default: 0 }
+    resources:            { type: integer, default: 0 }
+    declarations:         { type: integer, default: 0 }
+    pol_insertions:       { type: integer, default: 0 }
+    themes:               { type: integer, default: 0 }
+    comments:             { type: integer, default: 0 }
+    last_contribution:    { type: timestamp }
+
+  op_tax_declaration: 
+    content_id:           { type: integer, required: true, primaryKey: true, foreignTable: op_content, foreignReference: id, onDelete: CASCADE }
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    year:                 { type: integer, required: true }
+    url:                  { type: varchar(255), required: true }
+
+
+  op_similar_politician:
+    original_id:          { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    similar_id:           { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    is_resolved:          { type: tinyint, required: true, default: 0 }
+    compares_birth_locations: { type: tinyint, required: true, default: 0 }
+    created_at:           { type: timestamp }
+    updated_at:           { type: timestamp }
+    user_id:              { type: integer, required: false, index: true, foreignTable: op_user, foreignReference: id, onDelete: CASCADE }
+
+#
+# tabelle per gestire l'import versione 2    
+#
+  op_import_similar:
+    new_csv_rec:          { type: varchar(255), required: true, index: true }
+    old_csv_rec:          { type: varchar(255), required: true, index: true }
+    context:              { type: varchar(10), required: true, index: true }
+    location_id:          { type: integer, required: true, index: true, foreignTable: op_location, foreignReference: id, onDelete: cascade }
+    created_at:           { type: timestamp }
+    deleted_at:           { type: timestamp }
+    deleting_user_id:     { type: integer, required: false, index: true, foreignTable: op_user, foreignReference: id, onDelete: CASCADE }
+    n_diffs:              { type: integer }
+    charges_differ:       { type: tinyint }
+    names_differ:         { type: tinyint }
+    birth_dates_differ:   { type: tinyint }
+    birth_places_differ:  { type: tinyint }
+    _uniques: 
+      import_similar_idx: [new_csv_rec, old_csv_rec] 
+
+  op_import_modifications:
+    rec_type:             { type: varchar(3), required: true }
+    context:              { type: varchar(10), required: true, index: true }    
+    csv_rec:              { type: varchar(255), required: true }
+    action_type:          { type: varchar(16), required: false }
+    blocked_at:           { type: timestamp }
+    concretised_at:       { type: timestamp }
+    import_id:            { type: integer, unsigned: true, index: true, foreignTable: op_import_minint, foreignReference: id, onDelete: cascade }
+    location_id:          { type: integer, unsigned: true, required: true, index: true, foreignTable: op_location, foreignReference: id, onDelete: cascade }
+    _uniques: 
+      import_modifications_idx: [rec_type, csv_rec, import_id] 
+
+  op_import_block:
+    rec_type:             { type: varchar(3), required: true }
+    csv_rec:              { type: varchar(255), required: true }
+    created_at:           { type: timestamp }
+    creating_user_id:     { type: integer, required: false, index: true, foreignTable: op_user, foreignReference: id, onDelete: CASCADE }
+    _uniques: 
+      import_block_idx: [rec_type, csv_rec] 
+      
+  op_minint_aka:
+    politician_id:        { type: integer, required: true, index: true, foreignTable: op_politician, foreignReference: content_id, onDelete: CASCADE }
+    minint_aka:           { type: varchar(255), index: true }
+    created_at:           -
+    verified_at:          { type: timestamp }
+      

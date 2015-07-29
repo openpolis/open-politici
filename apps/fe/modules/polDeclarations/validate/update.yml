@@ -1,0 +1,89 @@
+##############################################################################
+#
+#    Questo file e' parte del progetto openpolis.
+# 
+#    openpolis - la politica trasparente
+#    copyright (C) 2008
+#    Ass. Democrazia Elettronica e Partecipazione Pubblica, 
+#    Via Luigi Montuori 5, 00154 - Roma, Italia
+#
+#    openpolis e' free software; e' possibile redistribuirlo o modificarlo
+#    nei termini della General Public License GNU, versione 2 o successive;
+#    secondo quanto pubblicato dalla Free Software Foundation.
+#
+#    openpolis e' distribuito nella speranza che risulti utile, 
+#    ma SENZA ALCUNA GARANZIA.
+#    
+#    Potete trovare la licenza GPL e altre informazioni su licenze
+#    e copyright nella cartella "licenze" del package.
+#
+#    $HeadURL$
+#    $LastChangedDate$
+#    $LastChangedBy$
+#    $LastChangedRevision$
+#
+##############################################################################
+methods:
+  get:            [politician_id, position, title, date, text, source_name, source_url, source_attach]
+  post:           [politician_id, position, title, date, text, source_name, source_url, source_attach]
+
+names:
+  politician_id:
+    required:     Yes
+    required_msg: "Selezionare un politico"
+    
+  title:
+    required:     Yes
+    required_msg: "Inserire un titolo"
+
+  position:
+    required:     Yes
+    required_msg: "selezionare una tra le posizioni indicate"
+
+  date:
+    required:     Yes
+    required_msg: "Inserire una data valida"
+    validators:   dateValidator
+
+  text:
+    required:     Yes
+    required_msg: "Inserire un testo"
+
+  source_name:
+    required:     Yes
+    required_msg: "Inserire una fonte"
+
+  source_url:
+    required:     Yes
+    validators:   urlValidator
+
+  source_attach:
+    required:     No
+    validators:   fileValidator
+
+dateValidator:
+  class:        sfDateValidator
+  param:
+    date_error:  "la data inserita non &egrave; valida"
+
+fileValidator:
+  class:          sfFileValidator
+  param:
+    mime_types:       
+      - 'application/pdf'
+      - 'application/msword'
+      - 'image/jpeg'
+      - 'image/png'
+      - 'image/x-png'
+      - 'image/pjpeg'
+    mime_types_error: "E' possibile inserire file word/pdf e immagini png/jpg"
+
+urlValidator:
+  class:         myUrlValidator
+  param:
+    url_error:   "Indirizzo non valido"
+
+fillin:
+  enabled:       true
+  param:
+    name:        mainForm

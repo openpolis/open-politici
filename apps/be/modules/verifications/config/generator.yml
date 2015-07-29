@@ -1,0 +1,32 @@
+generator:
+  class:              sfBatchablePropelAdminGenerator
+  param:
+    model_class:      OpOpenContent
+    theme:            batchable
+    css:              my_generator
+    
+    fields:
+      user:           { name: Utente }
+      created_at:     { name: Inserito il }
+      politician:     { name: Politico }
+      charge:         { name: Incarico }
+      party:          { name: Partito/Lista }
+      deleted_at:     { name: Data rimozione }
+      verified_at:     { name: Data ultima verifica }
+      status_filter:  { name: Status }
+      
+    list:
+      title:          "Elenco delle ultime cariche istituzionali inserite dagli utenti"
+      peer_method:    doSelectJoinOpContentOrderByCreationTimestamp
+      display:        [content_id, _user, _created_at, _politician, _charge, _party, _status]
+      max_per_page:   20
+      object_actions:
+        accept: { name: 'Accetta', action: 'accept', icon: '/images/admin_icons/button_ok.png'}
+        reject: { name: 'Respingi', action: 'reject', icon: '/images/admin_icons/remove.png'}
+      
+      filters:        [verified_at, deleted_at, _statusFilter]
+      actions: []
+      batch_actions:
+        acceptSelection:        { name: Accetta i selezionati, action: acceptSelection }
+        rejectSelection:        { name: Rifiuta i selezionati, action: rejectSelection }
+      

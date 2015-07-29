@@ -1,0 +1,64 @@
+ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input, select, td, th {margin: 0; padding: 0}
+a img, :link img, :visited img {border: none}
+
+body {padding: 20px; background-color: #FFFFFF}
+
+body, td, th, input, select {font-family: Arial, Verdana, sans-serif; font-size: 12px}
+
+div.block {clear: both; margin: 10px 0; overflow: auto; width: 100%}
+div.block label {display: block; font-weight: bold; margin-bottom: 2px}
+
+div.info-block {margin: 10px 0; color: #8A8A85}
+div.info-block label {font-weight: bold}
+
+a {color: #315578; text-decoration:underline}
+
+table.list {width: 100%; margin: 1em 0; border-left: 1px solid #ECECE4; border-right: 1px solid #ECECE4; border-bottom: 1px solid #F0F0F0; empty-cells: show}
+table.list th, table.list td {padding: 0.25em; text-align: left; vertical-align: top}
+table.list th.edit, table.list th.delete {width: 1%}
+table.list th {color: #254B71; background-color: #B5BEC7; border: 1px solid #ECECE4; border-top-width: 2px; font-weight: normal; white-space: nowrap}
+table.list td {border-top: 1px solid #F0F0F0; font-weight: normal}
+table.list tr.bglight {background-color: #F8F8F4}
+table.list tr.bgdark {background-color: #F4F4EC}
+table.list tr.bglight:hover, table.list tr.bgdark:hover {background-color: #FFFFFF}
+
+div.button-block {overflow: auto; width: 100%; margin-top: 20px}
+
+.button {padding: 0 0.5em; margin-right: 0.5em; color: #FFFFFF; background: url(../images/admin/button-bg.gif) repeat-x center top #4D7299; border: 2px solid #FFFFFF; border-bottom-color: #2F475F; border-right-color: #2F475F}
+a.button {display: block; float: left; padding: 0.1em 0.5em; text-decoration: none}
+input.button {cursor: pointer}
+div.button-block input.button {float: left}
+
+#index_page {width: 80%; text-align: center; margin-left: auto; margin-right: auto;}
+
+ul#main_menu {margin-bottom: 10px; float: left;}
+#index_page ul#main_menu {margin-top: 30%; float: none;}
+ul#main_menu li, ul#sub_menu li {display:inline; padding: 3px;}
+ul#main_menu li.selected, ul#sub_menu li.selected {font-weight: bold; background-color: #555555; border: 1px solid #ECECE4;}
+ul#main_menu li.selected a, ul#sub_menu li.selected a {color: #EEEEEE;}
+
+
+
+#logout {float:right;}
+#index_page #logout {float: none; clear: both;}
+#logout .nick {font-weight: bold; color: grey;}
+
+#loginbox {margin-top: 100px; width: 400px; margin-left: auto; margin-right: auto;}
+#loginbox .title {text-align: center; font-weight: bold;  font-size: 18px;}
+#loginbox .field {margin:8px;}
+#loginbox .field label {display: block; width: 100px; float: left; text-align: right; padding-top: 6px; padding-right: 10px;  font-size: 14px;}
+#loginbox .field input {height: 20px; width: 205px; border: 1px solid gray; padding: 3px;  font-size: 16px;}
+#loginbox .butt {text-align: center;}
+#loginbox .butt input {font-size: 14px;}
+#loginbox .form_error {font-size: 10px; color: red; margin-bottom: 5px;}
+
+.notice { background-color: #66ff66;  }
+.warning { background-color: #ffff66;  }
+.error { background-color: #ff6666;  }
+.flash-messages { border: 1px solid darkgray; font-size: 1.2em; padding: 1em; margin: 1em; font-weight: bold; text-align: center;}
+
+#main_content { margin-top: 20px; clear: both; }
+
+.sf_admin_list pre {
+  font-size: 10px;
+}

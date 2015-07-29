@@ -1,0 +1,20 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpTheme
+    theme:            default
+    css:              my_generator
+
+    fields:
+      content_id:       {name: "ID"}
+      title:            {name: "Titolo"}
+      relevancy_score:  {name: "Score"}
+      vsq08:            {name: "VSQ08"}
+
+    list:
+      title:          "Elenco dei temi"
+      display:        [content_id, title, relevancy_score, vsq08]
+      max_per_page:   40	  
+      filters:        [title, vsq08]
+      object_actions:
+        _edit:        -

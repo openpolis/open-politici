@@ -1,0 +1,71 @@
+OpImportSimilar:
+  reg_3_1:
+    new_csv_rec: "01|PIEMONTE|ARTESIO|ELEONORA LUIGIA|F|29/07/1954|TORINO (TO)|Consigliere"
+    old_csv_rec: "01|PIEMONTE|ARTESIO|ELEONORA|F|29/07/1954|TORINO (TO)|Consigliere"
+    context:     "reg"
+    location_id: 3
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_3_2:
+    new_csv_rec: "01|PIEMONTE|BIOLÃˆ|FABRIZIO|M|12/07/1977|CUNEO (CN)|Consigliere"
+    old_csv_rec: "01|PIEMONTE|BIOLE'|FABRIZIO|M|12/07/1977|CUNEO (CN)|Consigliere"
+    context:     "reg"
+    location_id: 3
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_3_3:
+    new_csv_rec: "01|PIEMONTE|BOETI|ANTONINO|M|07/02/1953|TAURIANOVA (RC)|Consigliere"
+    old_csv_rec: "01|PIEMONTE|BOETI|NINO|M|07/02/1953|TAURIANOVA (RC)|Consigliere"
+    context:     "reg"
+    location_id: 3
+    created_at:  "2011-03-14 13:18:30"
+    
+  reg_4:
+    new_csv_rec: "02|VALLE D'AOSTA|BENIN|ANACLETO|M|29/05/1948|SAN BONIFACIO (VR)|Consigliere"
+    old_csv_rec: "02|VALLE D'AOSTA|BENIN|ANACLETO|M|29/05/1948||Consigliere"
+    context:     "reg"
+    location_id: 4
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_5:
+    new_csv_rec: "12|070|ROMA|RM|AGOSTINI|ROBERTA|F|25/08/1966|PESARO (PS)|Consigliere"
+    old_csv_rec: "12|070|ROMA|RM|AGOSTINI|ROBERTA|F|25/08/1966|PESARO (PU)|Consigliere"
+    context:     "prov"
+    location_id: 80
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_6:
+    new_csv_rec: "06|035|GORIZIA|GO|ALTRAN|SILVIA|F|17/01/1955|MONFALCONE (GO)|Consigliere"
+    old_csv_rec: "06|035|GORIZIA|GO|ALTRAN CECHET|SILVIA|F|17/01/1955|MONFALCONE (GO)|Consigliere"
+    context:     "prov"
+    location_id: 53
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_7:
+    new_csv_rec: "01|002|ALESSANDRIA|AL|ANGELINI|DINO|M|10/07/1950|MORNESE (AL)|Consigliere"
+    old_csv_rec: "01|002|ALESSANDRIA|AL|ANGELINI|DINO ANGELO|M|10/07/1950|MORNESE (AL)|Consigliere"
+    context:     "prov"
+    location_id: 28
+    created_at:  "2011-03-14 13:18:30"
+    
+
+  reg_8:
+    new_csv_rec: "19|001|0010|AGRIGENTO|AG|ALFANO|FRANCESCO|M|06/02/1950|SANT'ANGELO MUXARO (AG)|Consigliere"
+    old_csv_rec: "19|001|0010|AGRIGENTO|AG|ALFANO|FRANCESCO|M|06/02/1950|SANT'ANGELO MUXARO (AG)|Presidente consiglio"
+    context:     "com.001"
+    location_id: 7155
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_9:
+    new_csv_rec: "19|001|0010|AGRIGENTO|AG|CALLARI|CARMELO|M|13/07/1960|PORTO EMPEDOCLE (AG)|Presidente consiglio"
+    old_csv_rec: "19|001|0010|AGRIGENTO|AG|CALLARI|CARMELO|M|13/07/1960|PORTO EMPEDOCLE (AG)|Consigliere"
+    context:     "com.001"
+    location_id: 7155
+    created_at:  "2011-03-14 13:18:30"
+
+  reg_10:
+    new_csv_rec: "19|001|0010|AGRIGENTO|AG|CAMPAGNA|ROBERTO|M|14/03/1972|AGRIGENTO (AG)|Assessore"
+    old_csv_rec: "19|001|0010|AGRIGENTO|AG|CAMPAGNA|ROBERTO |M|14/03/1972|AGRIGENTO (AG)|Assessore"
+    context:     "com.001"
+    location_id: 7155
+    created_at:  "2011-03-14 13:18:30"

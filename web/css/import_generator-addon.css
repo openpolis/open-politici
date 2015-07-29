@@ -1,0 +1,7 @@
+#sf_admin_container #sf_admin_bar {
+  width: 250px!important;
+}
+
+#sf_admin_container #sf_admin_content {
+  margin-right: 270px!important;
+}

@@ -1,0 +1,45 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      OpImport
+    theme:            default
+    css:              my_generator
+
+    fields:
+      import_type_id:    { name: 'Tipo' }
+      import_type:       { name: 'Tipo', type: 'plain' }
+      import_file:       { name: 'File', type: 'plain' }
+      import_location:   { name: 'Loc' }
+      exclusion_file:    { name: 'File di esclusione', type: 'plain' }
+      filter_file:       { name: 'File di filtro', type: 'plain' }
+      started_at:        { name: 'Inizio', type: 'plain', params: "date_format='dd/MM/yy HH:mm:ss' disabled=true" }
+      finished_at:       { name: 'Fine', type: 'plain', params: "date_format='dd/MM/yy HH:mm:ss'" }
+      run_type:          { name: 'Ex', type: 'plain' }
+      total:             { name: 'T', type: 'plain' }
+      errors:            { name: 'E', type: 'plain' }
+      warnings:          { name: 'W (ch)', type: 'plain' }
+      inserted:          { name: 'I', type: 'plain' } 
+      import_minint_id:  { name: 'Data' }
+    list:
+      title:          "Elenco degli import"
+      peer_method:    doSelectJoinOpImportType
+      display:        [_import_type, _import_file, import_location, started_at, finished_at, run_type, total, _errors, _warnings, inserted]
+      max_per_page:   15	  
+      filters:        [import_type_id, import_minint_id, import_location]
+      object_actions:
+        _edit:         -
+        linktolog:    { name: 'Vai al log', action: 'linkToLog', icon: 'images/admin_icons/details.png' }
+      actions:
+        _create:       NONE
+        refresh:      { name: 'Ricarica', action: 'refresh', icon: '/images/admin_icons/refresh.png' }
+#        dryReload:   { name: 'Simulazione completa', action: 'dryReload', icon: '/images/admin_icons/dry_run.png', params: "title=Esegue simulazione di import completo (rimuove tutti i report fino a ora)" }
+#        wetReload:   { name: 'Import completo', action: 'wetReload', icon: '/images/admin_icons/wet_run.png', params: "title=Esegue simulazione di import completo (rimuove tutti i report fino a ora)" }
+
+    edit:
+      fields:
+        import_type_id: { name: 'Tipo', params: 'disabled=true' }
+      actions:
+        _save:         NONE
+        _save_and_add: NONE
+        _delete:       -
+        _list:         -
