@@ -107,11 +107,8 @@ if ( $sf_params->get('sort') )
         </td>
 
         <td class="last">
-          <?php if ($institution_charge->getPartyId()==1): ?>
-            <?php echo 'Tecnico' ?>
-          <?php else: ?>
-            <?php echo $institution_charge->getOpParty()->getName() ?>
-          <?php endif; ?>	
+          
+          <?php echo $institution_charge->getOpParty()->getName() ?>
         </td>
       </tr>
 	  <?php $tr_class = ($tr_class == 'dark' ? 'light' : 'dark' )  ?>

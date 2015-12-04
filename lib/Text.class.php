@@ -479,10 +479,14 @@ class Text
 
       if($institution_charge->getPartyId()!=1)
       {
-        if ($institution_charge->getOpParty()->getAcronym())
-          $str .= "&nbsp;(Partito: ".$institution_charge->getOpParty()->getAcronym().")&nbsp;";
-        else
-          $str .= "&nbsp;(Partito: ".$institution_charge->getOpParty()->getName().")&nbsp;";
+        if ($institution_charge->getOpParty()->getName() == 'Tecnici')
+          $str .= "&nbsp; (Tecnici)&nbsp;";
+        else {
+          if ($institution_charge->getOpParty()->getAcronym())
+            $str .= "&nbsp;(Partito: ".$institution_charge->getOpParty()->getAcronym().")&nbsp;";
+          else
+            $str .= "&nbsp;(Partito: ".$institution_charge->getOpParty()->getName().")&nbsp;";
+        }
       }
 
     //nel caso di cariche elettive visualizzo (se presente) il gruppo	
