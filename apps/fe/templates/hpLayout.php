@@ -84,9 +84,9 @@
      </div>
   </div>
 
-  <!-- 5xmille  -->
+  <!-- 5xmille
   <script src="https://s3.eu-central-1.amazonaws.com/op-5xmille/5xmille-nojquery.js"></script>
-  <!-- end5xmille  -->
+  end5xmille  -->
 
   <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
