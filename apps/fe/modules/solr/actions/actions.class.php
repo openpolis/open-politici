@@ -287,8 +287,16 @@ class solrActions extends sfActions
     try
     {
       require_once('Apache/Solr/Service.php');
-      $solr = new Apache_Solr_Service('localhost', 8080, '/openpolitici');
-      
+      $solr_host = sfConfig::get("search_solr_host", 'localhost');
+      $solr_port = sfConfig::get("search_solr_port", 8080);
+      $solr_path = sfConfig::get("search_solr_path", '/openpolitici');
+     
+      $solr = new Apache_Solr_Service($solr_host, $solr_port, $solr_path);
+
+      sfContext::getInstance()->getLogger()->info("SOLR_HOST: ". $solr_host);      
+      sfContext::getInstance()->getLogger()->info("SOLR_PORT: ". $solr_port);      
+      sfContext::getInstance()->getLogger()->info("SOLR_PATH: ". $solr_path);      
+
       // effettua la ricerca
       $this->docs = array();
       $response = $solr->search($query, $offset, $limit, array("fl"=>"*,score"));
