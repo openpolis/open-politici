@@ -6,7 +6,7 @@ dev:
 all:
   query_debug: 0
   solr:
-    host: "my_solr"
+    host: "localhost"
     port: 8080
     path: "/solr/openpolitici"
     
