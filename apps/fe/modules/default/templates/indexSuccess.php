@@ -68,14 +68,9 @@
                                       (!stristr(SF_ENVIRONMENT,'prod')?'/be_'.SF_ENVIRONMENT.'.php':'').
                                       "/aggiungi_utente")?></li>
             </ul>
-        </div>
+        </div> 
         <div class="threecol last">
             <h1>In evidenza</h1>
-            <p>
-                <span class="inlinedot"></span><strong>I beni, i redditi e le spese elettorali dei parlamentari</strong> - 
-                <?php echo link_to('la lista dei <strong>parlamentari</strong> che hanno dato il consenso alla pubblicazione della dichiarazione patrimoniale','@dichiarazioni_patrimoniali_new') ?>
-                .
-            </p>
             <p>
                 <span class="inlinedot"></span><strong>Quanto giorni mancano alla pensione?</strong> - 
                 <?php echo link_to('la lista dei parlamentari che ancora non maturano la pensione','@pensioni_politici') ?>

@@ -669,6 +669,21 @@ class OpPolitician extends BaseOpPolitician {
     else 
       return null;
   }
+
+
+  /**
+   * ritorna le cariche istituzionali non cancellate
+   *
+   * @return un array con le cariche
+   * @author Guglielmo Celata
+   **/
+  public function getTax4Politician()
+  {
+      $c = new Criteria();
+      $c->add(OpPoliticianPeer::CONTENT_ID, $this->getContentId());
+      $c->addJoin(OpPoliticianPeer::CONTENT_ID, OpTaxDeclarationPeer::POLITICIAN_ID);
+      return OpTaxDeclarationPeer::doSelect($c);
+  }
 		
 
 } // OpPolitician

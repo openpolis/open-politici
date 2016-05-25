@@ -10,6 +10,8 @@
 
 <?php $arr_dep=array() ?>
 <?php $arr_sen=array() ?>
+<?php $arr_dep_cn=array() ?>
+<?php $arr_sen_cn=array() ?>
 <?php foreach ($taxs as $k => $tax): ?>
   <?php
   $politician = OpPoliticianPeer::retrieveByPk($k);
@@ -22,11 +24,38 @@
   $c->add(OpInstitutionChargePeer::INSTITUTION_ID, array(4,5) , Criteria::IN);
   $c->add(OpInstitutionChargePeer::CHARGE_TYPE_ID, array(5,6) , Criteria::IN);
   $c->add(OpInstitutionChargePeer::POLITICIAN_ID, $politician->getContentId());
+  //$c->add(OpTaxDeclarationPeer::YEAR, 2015);
   $carica=OpInstitutionChargePeer::doSelectOne($c);
-  if ($carica->getChargeTypeId()==5)
-    $arr_dep[$politician->getContentId()]=$carica->getOpGroup()->getId();
-  else
-    $arr_sen[$politician->getContentId()]=$carica->getOpGroup()->getId();
+  if ($carica)
+  {
+	  if ($carica->getChargeTypeId()==5)
+	  {
+	  	 $arr_dep[$politician->getContentId()]=$carica->getOpGroup()->getId();
+		 if ($politician->getTax4Politician())
+		 {
+			 foreach ($politician->getTax4Politician() as $pt)
+			 {
+				 if ($pt->getYear()==2015)
+					$arr_dep_cn[$politician->getContentId()]=$carica->getOpGroup()->getId();
+			 }
+			 
+		 }
+		 
+	  }
+	  else
+	  {
+		 $arr_sen[$politician->getContentId()]=$carica->getOpGroup()->getId();
+		 if ($politician->getTax4Politician())
+		 {
+			 foreach ($politician->getTax4Politician() as $pt)
+			 {
+				 if ($pt->getYear()==2015)
+					$arr_sen_cn[$politician->getContentId()]=$carica->getOpGroup()->getId();
+			 } 
+		 } 
+	  }
+  }
+  
   ?>
 <?php endforeach; ?>
 
@@ -36,7 +65,7 @@
     <h1>Le dichiarazioni patrimoniali dei Parlamentari</h1>
   </div>
   <p style="font-size:14px;">
-    <strong>Hanno finora dato il consenso alla pubblicazione della dichiarazione patrimoniale <a href="#deputati"><?php echo count($arr_dep) ?> deputati</a> (<?php echo number_format((count($arr_dep)*100/630),2)."%" ?>) e <a href="#senatori"><?php echo count($arr_sen) ?> senatori</a> (<?php echo number_format((count($arr_sen)*100/315),2)."%" ?>) .</strong>
+    <strong>Hanno finora dato il consenso alla pubblicazione della dichiarazione patrimoniale per l'anno 2015, <a href="#deputati"><?php echo count($arr_dep_cn) ?> deputati</a> (<?php echo number_format((count($arr_dep_cn)*100/630),2)."%" ?>) e <a href="#senatori"><?php echo count($arr_sen_cn) ?> senatori</a> (<?php echo number_format((count($arr_sen_cn)*100/315),2)."%" ?>) .</strong>
   </p>
   <div>
     Elenco aggiornato dei parlamentari che hanno dato il consenso alla pubblicazione online della dichiarazione patrimoniale personale (beni mobili e immobili, redditi e spese elettorali).<br/>
@@ -47,11 +76,11 @@
   </div>
    <a name="deputati"></a>
   <div class="header" style="margin-top:15px;">
-    <h2>Camera dei Deputati, <?php echo count($arr_dep) ?> su 630 (<?php echo number_format((count($arr_dep)*100/630),2)."%" ?>)</h2>
+    <h2>Camera dei Deputati, <?php echo count($arr_dep_cn) ?> su 630 (<?php echo number_format((count($arr_dep_cn)*100/630),2)."%" ?>) hanno pubblicato la dichiarazione del 2015</h2>
   </div>
   <br/>
   <div style="float:left; width:42%">
-    <?php $arr_g_dep=array_count_values($arr_dep) ?>
+    <?php $arr_g_dep=array_count_values($arr_dep_cn) ?>
     <table>
       <tbody>
         <tr class="label">
@@ -120,12 +149,12 @@
   </table>
   <a name="senatori"></a>
   <div class="header" style="margin-top:15px;">
-    <h2>Senato della Repubblica, <?php echo count($arr_sen) ?> su 315 (<?php echo number_format((count($arr_sen)*100/315),2)."%" ?>)</h2>
+    <h2>Senato della Repubblica, <?php echo count($arr_sen_cn) ?> su 315 (<?php echo number_format((count($arr_sen_cn)*100/315),2)."%" ?>) hanno pubblicato la dichiarazione del 2015</h2>
   </div>
   <br/>
 
   <div style="float:left; width:42%">
-    <?php $arr_g_sen=array_count_values($arr_sen) ?>
+    <?php $arr_g_sen=array_count_values($arr_sen_cn) ?>
     <table>
       <tbody>
         <tr class="label">

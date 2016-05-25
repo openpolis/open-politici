@@ -782,7 +782,7 @@ class politicianActions extends sfActions
 	    $add=array($tax->getYear(),$tax->getUrl());
 	    if (array_key_exists($tax->getPoliticianId(),$array))
 	      $array[$tax->getPoliticianId()]=array_merge((array)$array[$tax->getPoliticianId()],(array)$add);
-	    elseif ($tax->getYear()==2014)
+	    elseif ($tax->getYear()==2014 || $tax->getYear()==2015)
 	      $array[$tax->getPoliticianId()]=$add;
 	  }
 	  $this->taxs=$array;

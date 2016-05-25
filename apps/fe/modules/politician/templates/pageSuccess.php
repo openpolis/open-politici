@@ -159,19 +159,27 @@ endforeach;
     <div class="header">
       <h2>Dichiarazioni patrimoniali dell'eletto: beni immobili, mobili, spese elettorali (<?php echo count(OpTaxDeclaration::getTaxForPolitician($op_politician->getContentId())) ?>)</h2>
     </div>
-    <div style="padding-top:3px;">Questo politico ha dato il consenso per la pubblicazione online della sua dichiarazione patrimoniale. Per la lista completa degli altri politici <?php echo link_to('clicca qui','@dichiarazioni_patrimoniali_new')?>.</div>
     <div id="declarations_container" style="padding-top:3px;">
-      Scarica le dichiarazioni: 
+      Scarica le dichiarazioni patrimoniali: 
       <?php foreach (OpTaxDeclaration::getTaxForPolitician($op_politician->getContentId()) as $k=>$tax) :?>
-        <strong><?php echo link_to('anno '.$tax->getYear(),'http://politici.openpolis.it/tax/pdf/'.$op_politician->getContentId().'_'.$tax->getYear().'.pdf')?></strong>
+        <strong><?php echo link_to('anno '.$tax->getYear(),'https://s3.amazonaws.com/op_patrimoni/dichiarazioni/pdf/'.$op_politician->getContentId().'_'.$tax->getYear().'.pdf') ?></strong>
         <?php if ($k+1<count(OpTaxDeclaration::getTaxForPolitician($op_politician->getContentId()))) :?>
           <?php echo ' | '?>
         <?php endif; ?>    
       <?php endforeach; ?>  
+	  <?php
+	  $json=json_decode("http://patrimoni.openpolis.it/api/politici/".$op_politician->getContentId());
+	  $patrimoni= count($json);
+	  if ($patrimoni>0)
+	  {
+	  	echo "<p><strong><a href='http://patrimoni.openpolis.it/#/scheda/".$op_politician->getLastName().'-'.$op_politician->getFirstName().'/'.$op_politician->getContentId()."'>Vai sulla sua pagina di Patrimoni Trasparenti</a></strong></p>";
+	  }
+	  ?>
     </div>  
     <hr />
     <div class="orisep">&nbsp;</div>
-<?php endif; ?>  
+<?php endif; ?>
+
 <!-- #################### INIZIO BLOCCO DICHIARAZIONI ####################  -->
 <div class="genericblock">
   <div class="header">
