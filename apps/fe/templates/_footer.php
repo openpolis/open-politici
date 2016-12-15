@@ -62,7 +62,7 @@
             </ul>
             <h3>Sostienici</h3>
             <ul>
-                <li><a href="http://www.openpolis.it/sostienici/">Diventa socio</a></li>
+                <li><a href="http://www.openpolis.it/5xmille/">Dona il tuo 5xmille!</a></li>
                 <li><a href="http://www.openpolis.it/sostienici/dona/">Fai una donazione</a></li>
                 <li><a href="http://www.openpolis.it/sostienici/collabora/">Collabora con noi</a></li>
             </ul>
