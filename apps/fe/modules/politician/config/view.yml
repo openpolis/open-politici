@@ -46,7 +46,7 @@ forinstitutionSuccess:
 
 pageSuccess:
   components:
-     wiki:        [sidebar, politicianWiki]
+#     wiki:        [sidebar, politicianWiki]
      users:       [user, politicianUsers]
      adoptions:   [user, adoptionUsers]
 
