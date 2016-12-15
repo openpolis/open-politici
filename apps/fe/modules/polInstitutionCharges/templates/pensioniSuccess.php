@@ -20,7 +20,7 @@
   <div style="font-size:12px;">
   I deputati e i senatori, dopo 5 anni di effettivo mandato parlamentare, ricevono la pensione (assegno vitalizio) a partire dal 65mo anno di età.<br/>
   La normativa è stata modificata nel 2007 attraverso una deliberazione congiunta del Consiglio di Presidenza del Senato della Repubblica e dell'Ufficio di Presidenza della Camera dei Deputati.
-  Prima, erano necessari solo 2 anni e mezzo di mandato. Per approfondimenti: <a href="http://www.camera.it/383?deputatotesto=4&conoscerelacamera=4">trattamento economico dei deputati</a>, <a href="http://www.senato.it/composizione/21593/132051/genpagina.htm">trattamenti economico dei senatori</a>. 
+  Prima, erano necessari solo 2 anni e mezzo di mandato. Per approfondimenti: <a href="http://www.camera.it/leg17/383?conoscerelacamera=4">trattamento economico dei deputati</a>, <a href="http://www.senato.it/Leg17/1075?voce_sommario=61">trattamenti economico dei senatori</a>. 
   </div>  
   <br/>
   <div class="header">
@@ -28,7 +28,7 @@
  </div>
  <br/>
  
- <div style="float:left; width:42%">
+ <div>
  <a name="deputati"></a>
  <table>
    <tbody>
@@ -41,6 +41,7 @@
        $valori="";
        $all="";
        $k=0;
+	   arsort($gruppi_c);
       while (list($key, $val) = each($gruppi_c))
       {
         $all_gruppo=count(OpInstitutionChargePeer::fetchOrganMembersByGroup(4,array(5),2,$key));
@@ -57,9 +58,9 @@
       </tbody>
       </table>
   </div>
-  <div style="float:right; width:55%">
+  <div>
      <?php
-    $url_gchart="http://chart.apis.google.com/chart?cht=bvs&chs=380x200&chd=t:".trim($valori,',')."|".trim($all,',')."&chco=4d89f9,c6d9fd&chbh=20&chxt=x&chxl=".trim($label,'|')."&chm=N,000000,0,-1,11&chbh=40,10,10&chds=0,350,0,350";
+    $url_gchart="http://chart.apis.google.com/chart?cht=bvs&chs=780x200&chd=t:".trim($valori,',')."|".trim($all,',')."&chco=4d89f9,c6d9fd&chbh=20&chxt=x&chxl=".trim($label,'|')."&chm=N,000000,0,-1,11&chbh=60,10,10&chds=0,350,0,350";
      ?>
      <img src="<?php echo $url_gchart ?>">
 
@@ -104,7 +105,7 @@
  </div>
  <br/>
 
-  <div style="float:left; width:42%">
+  <div>
   <a name="senatori"></a>
   <table>
     <tbody>
@@ -117,6 +118,7 @@
          $valori="";
          $all="";
          $k=0;
+		  arsort($gruppi_s);
        while (list($key, $val) = each($gruppi_s))
        {
          $all_gruppo=count(OpInstitutionChargePeer::fetchOrganMembersByGroup(5,array(6,20),2,$key));
@@ -133,9 +135,9 @@
        </tbody>
        </table>
    </div>
-   <div style="float:right; width:55%">
+   <div>
        <?php
-      $url_gchart="http://chart.apis.google.com/chart?cht=bvs&chs=380x200&chd=t:".trim($valori,',')."|".trim($all,',')."&chco=4d89f9,c6d9fd&chbh=20&chxt=x&chxl=".trim($label,'|')."&chm=N,000000,0,-1,11&chbh=40,10,10&chds=0,200,0,200";
+      $url_gchart="http://chart.apis.google.com/chart?cht=bvs&chs=780x200&chd=t:".trim($valori,',')."|".trim($all,',')."&chco=4d89f9,c6d9fd&chbh=20&chxt=x&chxl=".trim($label,'|')."&chm=N,000000,0,-1,11&chbh=70,10,10&chds=0,350,0,350";
        ?>
       <img src="<?php echo $url_gchart ?>">
 
@@ -154,11 +156,8 @@
          <td>Gruppo</td>
        </tr>
   <?php
-       
-  asort($pensioni_s);
-  
-  
-  
+
+  asort($pensioni_s); 
   while (list($key, $val) = each($pensioni_s)) 
   {
   echo "<tr>";
