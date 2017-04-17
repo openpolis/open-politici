@@ -1,3 +1,6 @@
 /cache/*
 /log/*
 Thumbs.db
+.idea
+.DS_Store
+incarichi_comuni.*
