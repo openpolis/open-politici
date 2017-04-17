@@ -18,9 +18,7 @@
   </div>
   <br/>
   <div style="font-size:12px;">
-  I deputati e i senatori, dopo 5 anni di effettivo mandato parlamentare, ricevono la pensione (assegno vitalizio) a partire dal 65mo anno di età.<br/>
-  La normativa è stata modificata nel 2007 attraverso una deliberazione congiunta del Consiglio di Presidenza del Senato della Repubblica e dell'Ufficio di Presidenza della Camera dei Deputati.
-  Prima, erano necessari solo 2 anni e mezzo di mandato. Per approfondimenti: <a href="http://www.camera.it/leg17/383?conoscerelacamera=4">trattamento economico dei deputati</a>, <a href="http://www.senato.it/Leg17/1075?voce_sommario=61">trattamenti economico dei senatori</a>. 
+  I deputati e i senatori, dopo 5 anni mandato parlamentare, ricevono la pensione a partire dal 65mo anno di età. Per ogni anno di mandato oltre il quinto, il requisito anagrafico è diminuito di un anno sino al minimo inderogabile di 60 anni. <a href="https://drive.google.com/file/d/0B4qZk63Fhz9bZlhpaFFqSEdGTUU/view?usp=sharing">È importante specificare</a> che la frazione di anno si computa come anno intero purché corrisponda ad almeno sei mesi ed un giorno. Basterà quindi raggiungere 4 anni, 6 mesi e 1 giorno di mandato per maturare la pensione da parlamentare. Dal 1° gennaio 2012 è stato introdotto il nuovo trattamento previdenziale dei parlamentari, basato sul sistema di calcolo contributivo già adottato per il personale dipendente della pubblica amministrazione. Per approfondimenti: <a href="http://www.camera.it/leg17/383?conoscerelacamera=4">trattamento economico dei deputati</a>, <a href="http://www.senato.it/Leg17/1075?voce_sommario=61">trattamenti economico dei senatori</a>. 
   </div>  
   <br/>
   <div class="header">

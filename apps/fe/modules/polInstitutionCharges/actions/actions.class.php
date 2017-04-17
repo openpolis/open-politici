@@ -503,7 +503,7 @@ $politician = $institution_charge->getOpPolitician();
       {
         $giorni=$giorni+count_days(strtotime($last->getDateEnd()),strtotime($last->getDateStart()));
       }
-      if ($giorni<360*5)
+      if ($giorni<365*4+(365/2)+1)
       {
         if (array_key_exists($parl->getGroupId(),$gruppi_c))
         {
@@ -513,7 +513,7 @@ $politician = $institution_charge->getOpPolitician();
         {
           $gruppi_c[$parl->getGroupId()]=1;
         }
-        $arr_c[$parl->getContentId()]=360*5-$giorni;
+        $arr_c[$parl->getContentId()]=intval(365*4+(365/2)+1-$giorni);
       } 
     }
     
@@ -552,7 +552,7 @@ $politician = $institution_charge->getOpPolitician();
       {
         $giorni=$giorni+count_days(strtotime($last->getDateEnd()),strtotime($last->getDateStart()));
       }
-      if ($giorni<360*5)
+      if ($giorni<365*4+(365/2)+1)
       {
         if (array_key_exists($parl->getGroupId(),$gruppi_s))
         {
@@ -562,7 +562,7 @@ $politician = $institution_charge->getOpPolitician();
         {
           $gruppi_s[$parl->getGroupId()]=1;
         }
-        $arr_s[$parl->getContentId()]=360*5-$giorni;
+        $arr_s[$parl->getContentId()]=intval(365*4+(365/2)+1-$giorni);
       } 
     }
     
